@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Collective\Html\HtmlFacade;
+use Collective\Html\FormFacade;
 
 return [
 
@@ -185,6 +187,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Collective\Html\HtmlServiceProvider::class, // Ajout de cette ligne
 
         /*
          * Application Service Providers...
@@ -210,6 +213,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Form' => FormFacade::class,
+        'Html' => HtmlFacade::class,
     ])->toArray(),
 
 ];
