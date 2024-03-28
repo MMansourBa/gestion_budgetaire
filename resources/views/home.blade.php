@@ -30,9 +30,9 @@
               </h1>
               {{-- <button>Explore</button> --}}
               <div class="icons">
-                <img src="assets/images/fb.jpg" />
-                <img src="assets/images/x.jpg" />
-                <img src="assets/images/insta.jpg" />
+                <img src="assets/images/social_icons/facebook.svg" />
+                <img src="assets/images/social_icons/twitter.svg" />
+                <img src="assets/images/social_icons/instagram.svg" />
               </div>
             </div>
     
