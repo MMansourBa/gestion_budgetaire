@@ -11,10 +11,10 @@
       <div class="card-body">
         <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
           <div class="float-left">
-            <i class="mdi mdi-cube text-danger icon-lg"></i>
+            <i class="mdi mdi-wallet text-info icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Total Revenue</p>
+            <p class="mb-0 text-right">Budget</p>
             <div class="fluid-container">
               <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
             </div>
@@ -30,10 +30,10 @@
       <div class="card-body">
         <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
           <div class="float-left">
-            <i class="mdi mdi-receipt text-warning icon-lg"></i>
+            <i class="mdi mdi-chart-line text-danger icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Orders</p>
+            <p class="mb-0 text-right">Recettes</p>
             <div class="fluid-container">
               <h3 class="font-weight-medium text-right mb-0">3455</h3>
             </div>
@@ -49,10 +49,10 @@
       <div class="card-body">
         <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
           <div class="float-left">
-            <i class="mdi mdi-poll-box text-success icon-lg"></i>
+            <i class="mdi mdi-currency-usd text-success icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Sales</p>
+            <p class="mb-0 text-right">Depenses</p>
             <div class="fluid-container">
               <h3 class="font-weight-medium text-right mb-0">5693</h3>
             </div>
@@ -68,10 +68,10 @@
       <div class="card-body">
         <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
           <div class="float-left">
-            <i class="mdi mdi-account-box-multiple text-info icon-lg"></i>
+            <i class="mdi mdi-scale-balance text-warning icon-lg"></i>
           </div>
           <div class="float-right">
-            <p class="mb-0 text-right">Employees</p>
+            <p class="mb-0 text-right">Solde</p>
             <div class="fluid-container">
               <h3 class="font-weight-medium text-right mb-0">246</h3>
             </div>

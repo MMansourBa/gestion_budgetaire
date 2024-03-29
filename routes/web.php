@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DepenseController;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/',[HomeController::class,'index'])->name('index');
 Route::get('/a-propos',[HomeController::class,'apropos'])->name('apropos');
@@ -29,6 +30,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{depense}', [DepenseController::class, 'edit'])->name('depense.edit');
         Route::put('/update/{depense}', [DepenseController::class, 'update'])->name('depense.update');
         Route::get('/{depense}', [DepenseController::class, 'delete'])->name('depense.delete');
+    });
+
+    Route::prefix('transactions')->group(function () {
+        Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
+        Route::get('/create', [TransactionController::class, 'create'])->name('transaction.create');
+        Route::get('/edit/{transaction}', [TransactionController::class, 'edit'])->name('transaction.edit');
+
+        //Route d'actions
+        Route::post('/store', [TransactionController::class, 'store'])->name('transaction.store');
+        Route::put('/update/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');
+        Route::get('/delete/{transaction}', [TransactionController::class, 'delete'])->name('transaction.delete');
     });
 });
 

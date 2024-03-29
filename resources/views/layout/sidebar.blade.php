@@ -48,7 +48,7 @@
       <li class="nav-item {{ active_class(['basic-ui/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
           <i class="menu-icon mdi mdi-dna"></i>
-          <span class="menu-title">Depenses</span>
+          <span class="menu-title">Categorie de depenses</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
@@ -57,10 +57,10 @@
               <a class="nav-link" href="{{ route('depense.create') }}">Nouvelle categorie de depenses</a>
             </li>
             {{-- <li class="nav-item {{ active_class(['basic-ui/typography']) }}">
-              <a class="nav-link" href="{{ url('/basic-ui/typography') }}">Typography</a>
+              <a class="nav-link" href="#">Typography</a>
             </li> --}}
             <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
-              <a class="nav-link" href="{{ route('depense.index') }}">Liste des categories de depenses</a>
+              <a class="nav-link" href="{{ route('depense.index') }}">Liste</a>
             </li>
           </ul>
         </div>
@@ -69,19 +69,20 @@
       <li class="nav-item {{ active_class(['user-pages/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
           <i class="menu-icon mdi mdi-lock-outline"></i>
-          <span class="menu-title">User Pages</span>
+          <span class="menu-title">Depenses</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse {{ show_class(['user-pages/*']) }}" id="user-pages">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item {{ active_class(['user-pages/login']) }}">
-              <a class="nav-link" href="{{ url('/user-pages/login') }}">Login</a>
+              <a class="nav-link" href="{{ route('transaction.create') }}">Ajouter</a>
             </li>
-            <li class="nav-item {{ active_class(['user-pages/register']) }}">
-              <a class="nav-link" href="{{ url('/user-pages/register') }}">Register</a>
-            </li>
+            
+            {{-- <li class="nav-item {{ active_class(['user-pages/register']) }}">
+              <a class="nav-link" href="{{ route('transaction.edit') }}">Modifier</a>
+            </li> --}}
             <li class="nav-item {{ active_class(['user-pages/lock-screen']) }}">
-              <a class="nav-link" href="{{ url('/user-pages/lock-screen') }}">Lock Screen</a>
+              <a class="nav-link" href="{{ route('transaction.index') }}">Liste des depenses</a>
             </li>
           </ul>
         </div>
