@@ -20,4 +20,11 @@ class Transaction extends Model
     {
         return $this->belongsTo(Depense::class);
     }
+
+    
+    public function getSoldeDisponibleAttribute()
+    {
+        return $this->credits_alloues - $this->montant;
+    }
+
 }

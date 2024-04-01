@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreign('depense_id')->references('id')->on('depenses');
             $table->integer('montant')->nullable();
             $table->date('date');
+            // $table->integer('solde_disponible')->nullable();
             $table->timestamps();
         });
     }
