@@ -18,10 +18,13 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'postRegister'])->name('register.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+// Route::middleware('auth')->group(function () {
+//     Route::get('dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+    Route::middleware('auth')->group(function () {
+        Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    });
 
     Route::prefix('depenses')->group(function () {
         Route::get('/', [DepenseController::class, 'index'])->name('depense.index');
@@ -42,6 +45,6 @@ Route::middleware('auth')->group(function () {
         Route::put('/update/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');
         Route::get('/delete/{transaction}', [TransactionController::class, 'delete'])->name('transaction.delete');
     });
-});
+
 
 

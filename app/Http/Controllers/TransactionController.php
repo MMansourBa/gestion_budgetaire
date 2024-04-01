@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Depense;
 use App\Models\Transaction;
+
 use Exception;
 
 class TransactionController extends Controller
@@ -13,7 +14,11 @@ class TransactionController extends Controller
     //Recherhe transactions
     public function index()
     {
+        
+
+        // Récupérer la somme totale des budgets depuis la base de données
         $transactions = Transaction::with('depense')->paginate(10);
+
         return view('transactions.index', compact('transactions'));
     }
 
