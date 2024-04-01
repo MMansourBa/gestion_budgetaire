@@ -25,7 +25,7 @@ class UpdateTransactionRequest extends FormRequest
     {
         return [
             'depense_id'=>'required|integer',
-            'numero_compte'=>'required|unique:transactions,numero_compte',
+            // 'numero_compte'=>'required|unique:transactions,numero_compte',
             'intitule'=>'required|string',
             'credits_alloues'=>'required|integer',
             // 'numero_depense'=>'integer',
