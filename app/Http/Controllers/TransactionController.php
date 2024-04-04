@@ -9,18 +9,31 @@ use App\Models\Transaction;
 
 use Exception;
 
+
 class TransactionController extends Controller
 {
-    //Recherhe transactions
     public function index()
     {
-        
+        // Récupérer toutes les catégories de dépenses disponibles
+        $categories = Depense::all();
 
-        // Récupérer la somme totale des budgets depuis la base de données
-        $transactions = Transaction::with('depense')->paginate(10);
+        // Initialiser un tableau pour stocker les transactions par catégorie
+        $transactionsParCategorie = [];
 
-        return view('transactions.index', compact('transactions'));
+        // Pour chaque catégorie, récupérer les transactions associées
+        foreach ($categories as $categorie) {
+            // Récupérer les transactions associées à cette catégorie
+            $transactions = Transaction::where('depense_id', $categorie->id)->paginate(10);
+
+            // Stocker les transactions dans le tableau $transactionsParCategorie
+            $transactionsParCategorie[$categorie->name] = $transactions;
+        }
+
+        // Passer les données à la vue
+        return view('transactions.index', compact('transactionsParCategorie'));
     }
+
+
 
     //Ajout transactions
     public function create()
