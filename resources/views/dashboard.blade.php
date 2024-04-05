@@ -106,7 +106,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+{{-- <div class="row">
   <div class="col-md-12 grid-margin">
     <div class="card">
       <div class="card-body">
@@ -129,8 +129,8 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row">
+</div> --}}
+{{-- <div class="row">
   <div class="col-md-6 col-xl-4 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -260,8 +260,8 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row">
+</div> --}}
+{{-- <div class="row">
   <div class="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -356,7 +356,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 <div class="row">
   <div class="col-lg-12 grid-margin">
     <div class="card">
@@ -447,7 +447,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+{{-- <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
@@ -571,7 +571,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 @endsection
 
 @push('plugin-scripts')

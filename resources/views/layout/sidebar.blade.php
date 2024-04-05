@@ -35,8 +35,9 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-success btn-block">New Project <i class="mdi mdi-plus"></i>
-          </button>
+          {{-- <button class="btn btn-success btn-block">New Project <i class="mdi mdi-plus"></i>
+          </button> --}}
+          <a href="{{ route('transaction.index') }}"><button class="btn btn-success btn-block">Liste Depenses</button></a>
         </div>
       </li>
       <li class="nav-item {{ active_class(['/']) }}">
@@ -96,14 +97,14 @@
       </li> --}}
       <li class="nav-item {{ active_class(['tables/basic-table']) }}">
         <a class="nav-link" href="{{ url('/tables/basic-table') }}">
-          <i class="menu-icon mdi mdi-table-large"></i>
-          <span class="menu-title">Tables</span>
+          <i class="menu-icon mdi mdi-file-outline"></i>
+          <span class="menu-title">Mandat</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="https://www.bootstrapdash.com/demo/star-laravel-free/documentation/documentation.html" target="_blank">
           <i class="menu-icon mdi mdi-file-outline"></i>
-          <span class="menu-title">Documentation</span>
+          <span class="menu-title">Bon d'engagement</span>
         </a>
       </li>
     </ul>

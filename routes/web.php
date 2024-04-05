@@ -17,6 +17,8 @@ Route::post('/login', [AuthController::class, 'post'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'postRegister'])->name('register.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/search/{name}', [AuthController::class, 'search'])->name('search');
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('dashboard', function () {
