@@ -27,4 +27,7 @@ class Transaction extends Model
         return $this->credits_alloues - $this->montant;
     }
 
+
+    
+
 }

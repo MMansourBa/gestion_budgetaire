@@ -95,17 +95,40 @@
           <span class="menu-title">Charts</span>
         </a>
       </li> --}}
-      <li class="nav-item {{ active_class(['tables/basic-table']) }}">
-        <a class="nav-link" href="{{ url('/tables/basic-table') }}">
+      <li class="nav-item {{ active_class(['basic-ui/*']) }}">
+        <a class="nav-link" data-toggle="collapse" href="#bon-engagement-menu" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="bon-engagement-menu">
+            <i class="menu-icon mdi mdi-file-outline"></i>
+            <span class="menu-title">Bon d'engagement</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse {{ show_class(['basic-ui/*']) }}" id="bon-engagement-menu">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item {{ active_class(['basic-ui/buttons']) }}">
+                    <a class="nav-link" href="{{ route('bonEngagement.create') }}">Ajouter un bon d'engagement</a>
+                </li>
+                <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
+                    <a class="nav-link" href="{{ route('bonEngagement.index') }}">Liste</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    
+    <li class="nav-item {{ active_class(['basic-ui/*']) }}">
+      <a class="nav-link" data-toggle="collapse" href="#mandat-menu" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="mandat-menu">
           <i class="menu-icon mdi mdi-file-outline"></i>
           <span class="menu-title">Mandat</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.bootstrapdash.com/demo/star-laravel-free/documentation/documentation.html" target="_blank">
-          <i class="menu-icon mdi mdi-file-outline"></i>
-          <span class="menu-title">Bon d'engagement</span>
-        </a>
-      </li>
+          <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse {{ show_class(['basic-ui/*']) }}" id="mandat-menu">
+          <ul class="nav flex-column sub-menu">
+              <li class="nav-item {{ active_class(['basic-ui/buttons']) }}">
+                  <a class="nav-link" href="{{ route('mandat.create') }}">Ajouter un mandat</a>
+              </li>
+              <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
+                  <a class="nav-link" href="{{ route('mandat.index') }}">Liste</a>
+              </li>
+          </ul>
+      </div>
+  </li>
     </ul>
   </nav>

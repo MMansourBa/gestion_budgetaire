@@ -26,25 +26,7 @@
       </div>
     </div>
   </div>
-  {{-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-    <div class="card card-statistics">
-      <div class="card-body">
-        <div class="d-flex flex-md-column flex-xl-row flex-wrap justify-content-between align-items-md-center justify-content-xl-between">
-          <div class="float-left">
-            <i class="mdi mdi-chart-line text-danger icon-lg"></i>
-          </div>
-          <div class="float-right">
-            <p class="mb-0 text-right">Recettes</p>
-            <div class="fluid-container">
-              <h3 class="font-weight-medium text-right mb-0">3455</h3>
-            </div>
-          </div>
-        </div>
-        <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise sales </p>
-      </div>
-    </div>
-  </div> --}}
+  
   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
     <div class="card card-statistics">
       <div class="card-body">
@@ -357,94 +339,60 @@
     </div>
   </div>
 </div> --}}
+<br> <br>
 <div class="row">
-  <div class="col-lg-12 grid-margin">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Orders</h4>
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th> # </th>
-                <th> First name </th>
-                <th> Progress </th>
-                <th> Amount </th>
-                <th> Sales </th>
-                <th> Deadline </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-weight-medium"> 1 </td>
-                <td> Herman Beck </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $ 77.99 </td>
-                <td class="text-danger"> 53.64% <i class="mdi mdi-arrow-down"></i>
-                </td>
-                <td> May 15, 2015 </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 2 </td>
-                <td> Messsy Adam </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $245.30 </td>
-                <td class="text-success"> 24.56% <i class="mdi mdi-arrow-up"></i>
-                </td>
-                <td> July 1, 2015 </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 3 </td>
-                <td> John Richards </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $138.00 </td>
-                <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i>
-                </td>
-                <td> Apr 12, 2015 </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 4 </td>
-                <td> Peter Meggik </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $ 77.99 </td>
-                <td class="text-danger"> 53.45% <i class="mdi mdi-arrow-down"></i>
-                </td>
-                <td> May 15, 2015 </td>
-              </tr>
-              <tr>
-                <td class="font-weight-medium"> 5 </td>
-                <td> Edward </td>
-                <td>
-                  <div class="progress">
-                    <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </td>
-                <td> $ 160.25 </td>
-                <td class="text-success"> 18.32% <i class="mdi mdi-arrow-up"></i>
-                </td>
-                <td> May 03, 2015 </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div class="tab-content" id="orders-table-tab-content">
+    <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+        @foreach ($transactionsParCategorie as $categorie => $transactions)
+            <h2>{{ $categorie }}</h2>
+            <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="app-card-body">
+                    <div class="table-responsive">
+                        <table class="table app-table-hover mb-0 text-left">
+                            <thead>
+                                <tr>
+                                    <th class="cell">Numero compte</th>
+                                    <th class="cell">Intitulé</th>
+                                    <th class="cell">Crédits alloués</th>
+                                    <th class="cell">N°</th>
+                                    <th class="cell">Intitulé dépense mandaté</th>
+                                    <th class="cell">Montant</th>
+                                    <th class="cell">Solde disponible</th>
+                                    <th class="cell">Date</th>
+                                    <th class="cell">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($transactions as $transaction)
+                                    <tr>
+                                        <td class="cell">{{ $transaction->numero_compte }}</td>
+                                        <td class="cell">{{ $transaction->intitule }}</td>
+                                        <td class="cell">{{ $transaction->credits_alloues }} FCFA</td>
+                                        <td class="cell">{{ $transaction->numero_depense }}</td>
+                                        <td class="cell">{{ $transaction->titre_depense }}</td>
+                                        <td class="cell">{{ $transaction->montant }}</td>
+                                        <td class="cell">{{ $transaction->solde_disponible }} FCFA</td>
+                                        <td class="cell">{{ $transaction->date }}</td>
+                                        <td class="cell">
+                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
+                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.delete', $transaction->id) }}">Supprimer</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="cell" colspan="9"><center>Aucune dépense</center></td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div><!--//table-responsive-->
+                </div><!--//app-card-body-->
+            </div><!--//app-card-->
+        @endforeach
+        <nav class="app-pagination">
+            {{ $transactions->links() }}
+        </nav><!--//app-pagination-->
+    </div><!--//tab-pane-->
   </div>
 </div>
 {{-- <div class="row">

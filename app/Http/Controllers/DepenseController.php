@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Depense;
 use App\Http\Requests\saveDepenseRequest;
-use Exception;
 use Illuminate\Http\Request;
+use Exception;
 
 class DepenseController extends Controller
 {
-    ////Recherhe depense
+    
     public function index()
     {
         $depenses = Depense::paginate(10);
@@ -41,7 +41,7 @@ class DepenseController extends Controller
             return redirect()->route('depense.index')->with('success_message', 'Depense enregistré');
 
         }catch(Exception $e) {
-            // dd($e);
+            dd($e);
         }
         
     }
@@ -76,4 +76,15 @@ class DepenseController extends Controller
         }
         
     }
+
+    //Rechercher
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $depenses = Depense::where('name', 'LIKE', "%$searchTerm%")->get();
+
+        return view('depenses.index', compact('depenses'));
+    }   
+
 }

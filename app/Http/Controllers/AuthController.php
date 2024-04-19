@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Depense;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +66,28 @@ class AuthController extends Controller
 
     public function dashboard(){
         $totalBudget = DB::table('transactions')->sum('credits_alloues');
+
         $totalDepense = DB::table('transactions')->sum('montant');
+        
         $soldeRestant = $totalBudget - $totalDepense;
+
         $totalCategorie = Depense::all()->count();
-        return view('dashboard', compact('totalBudget', 'totalDepense', 'soldeRestant', 'totalCategorie'));
+        
+        // Récupérer toutes les catégories de dépenses disponibles
+        $categories = Depense::all();
+
+        // Initialiser un tableau pour stocker les transactions par catégorie
+        $transactionsParCategorie = [];
+
+        // Pour chaque catégorie, récupérer les transactions associées
+        foreach ($categories as $categorie) {
+            // Récupérer les transactions associées à cette catégorie
+            $transactions = Transaction::where('depense_id', $categorie->id)->paginate(10);
+
+            // Stocker les transactions dans le tableau $transactionsParCategorie
+            $transactionsParCategorie[$categorie->name] = $transactions;
+        }
+        return view('dashboard', compact('totalBudget', 'totalDepense', 'soldeRestant', 'totalCategorie', 'transactionsParCategorie'));
     }
 
 

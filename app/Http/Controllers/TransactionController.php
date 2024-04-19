@@ -55,6 +55,7 @@ class TransactionController extends Controller
     public function store(StoreTransactionRequest $request)
     {
         try{
+            
             $query = Transaction::create($request->all());
 
             if($query){
