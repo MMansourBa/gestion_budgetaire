@@ -79,7 +79,7 @@
                                     <td class="cell">{{$bonEngagement->qte}}</td>
                                     <td class="cell">{{$bonEngagement->prix_unitaire * $bonEngagement->qte}} FCFA</td>
                                     <td class="cell">
-                                        <a class="btn-sn app-btn-secondary" href="{{ route('bonEngagement.downloadPDF', $bonEngagement->id) }}">
+                                        <a class="btn-sn app-btn-secondary" href="{{ route('bonEngagement.bonPDF', $bonEngagement->id) }}">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                                                 <path fill-rule="evenodd" d="M7.5.5a.5.5 0 0 1 .5.5v8.793l2.146-2.147a.5.5 0 1 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7 9.293V1a.5.5 0 0 1 .5-.5z"/>

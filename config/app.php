@@ -217,7 +217,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Form' => FormFacade::class,
         'Html' => HtmlFacade::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
 
     

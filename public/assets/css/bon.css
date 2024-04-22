@@ -1,0 +1,105 @@
+body{
+    background: whitesmoke;
+    overflow-x: hidden;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3%;
+}
+.universite{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    max-width: 35%;
+}
+.universite h2{
+    font-size: 18px;
+}
+.universite img{
+    width: 100px;
+    margin-left: 0;
+}
+.date{
+    margin-right: 17%;
+    margin-top:3% ;
+    font-size: 20px;
+    font-weight: bold;
+}
+.titre h1{
+    text-align: center;
+}
+.service{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+.service .title{
+    font-size: 18px;
+    margin-left: 20px;
+}
+.service .title span{
+    font-weight: bold;
+}
+.service .compte{
+    margin-right: 14%;
+    margin-top:3% ;
+    font-size: 18px;
+    font-weight: bold;
+}
+.gestion{
+    font-size: 18px;
+    margin-left: 20px;
+}
+.gestion span{
+    font-weight: bold;
+}
+.beneficier{
+    margin-top: 50px;
+    margin-left: 20px;
+}
+ table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px;
+}
+th {
+    background-color: #f0f0f0;
+    text-align: left;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+td {
+    text-align: left;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+tfoot td.foot {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+}
+.prix{
+    margin-top: 3%;
+    font-size: 18px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.signature{
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+.visa ,.ordonnateur{
+    text-decoration: underline;
+    margin: 50px;
+}
+.ordonnateur .contenu, .signature .contenu{
+    width: 500px;
+    height: 200px;
+    background: white;
+}
+footer h3{
+    text-align: center;
+}

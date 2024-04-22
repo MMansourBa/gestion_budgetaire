@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BonEngagementController;
+use App\Http\Controllers\BonPdfController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DepenseController;
@@ -20,6 +21,8 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'postRegister'])->name('register.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/search/{name}', [AuthController::class, 'search'])->name('search');
+
+
 
 
 // Route::middleware('auth')->group(function () {
@@ -58,7 +61,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/edit/{bonEngagement}', [BonEngagementController::class, 'edit'])->name('bonEngagement.edit');
         Route::put('/update/{bonEngagement}', [BonEngagementController::class, 'update'])->name('bonEngagement.update');
         Route::get('/{bonEngagement}', [BonEngagementController::class, 'delete'])->name('bonEngagement.delete');
-        Route::get('/bon-engagement/{id}/download-pdf', [BonEngagementController::class, 'downloadPDF'])->name('bonEngagement.downloadPDF');
+        Route::get('/bonPDF/{id}/download-pdf', [BonPdfController::class, 'bonPdf'])->name('bonEngagement.bonPDF');
 
         // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');
     });

@@ -81,18 +81,4 @@ class BonEngagementController extends Controller
         
     }
 
-    public function downloadPDF($id)
-    {
-        // Récupérer le bon d'engagement correspondant à l'ID
-        $bonEngagement = BonEngagement::find($id);
-
-        // Générer le nom de fichier PDF
-        $fileName = 'bon_engagement_' . $bonEngagement->id . '.pdf';
-
-        // Générer le contenu PDF à partir d'une vue
-        $pdf = PDF::loadView('bon_engagement.pdf', compact('bonEngagement'));
-
-        // Télécharger le fichier PDF
-        return $pdf->download($fileName);
-    }
 }
