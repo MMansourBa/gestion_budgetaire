@@ -48,6 +48,9 @@
     <div class="alert alert-success">{{ Session::get('success_message') }}</div>
 @endif
 
+@if (Session::get('error_message'))
+    <div class="alert alert-error" style="color: red"><center>{{ Session::get('error_message') }}</center></div>
+@endif
 <div class="tab-content" id="orders-table-tab-content">
     <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
         @foreach ($transactionsParCategorie as $categorie => $transactions)
@@ -82,8 +85,9 @@
                                         <td class="cell">{{ $transaction->date }}</td>
                                         <td class="cell">
                                             <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
-                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.delete', $transaction->id) }}">Supprimer</a>
+                                            <a class="btn-sm app-btn-secondary" href="javascript:void(0);" onclick="confirmDelete('{{ route('transaction.delete', $transaction->id) }}')">Supprimer</a>
                                         </td>
+                                        
                                     </tr>
                                 @empty
                                     <tr>
@@ -101,5 +105,13 @@
         </nav><!--//app-pagination-->
     </div><!--//tab-pane-->
 </div><!--//tab-content-->
+
+<script>
+    function confirmDelete(url) {
+        if (confirm("Voulez-vous vraiment supprimer cette catégorie de dépenses ?")) {
+            window.location.href = url;
+        }
+    }
+</script>
 
 @endsection

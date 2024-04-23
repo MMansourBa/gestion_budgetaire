@@ -9,29 +9,34 @@
 <body>
     <header>
         <div class="universite">
-            <h2>UNIVERSITE IBA DER THIAM de THIES (UIDT) UFR DES SCIENCES ET TECHNOLOGIES
-            </h2>
+            {{-- <h2>UNIVERSITE IBA DER THIAM de THIES (UIDT) UFR DES SCIENCES ET TECHNOLOGIES
+            </h2> --}}
             <img src="assets/images/logo.jpg" alt="logo">
         </div>
         <div class="date">Thiès, le {{{$date}}}</div>
     </header>
+    <br>
+    <br>
     <main>
+        
+
         <div class="titre">
-            <h1>{{$title}}</h1>
+            <h1><center>{{$title}}</center></h1>
         </div>
         <div class="service">
             <div class="title"><p>  <span>Service émetteur: </span>UFR SET</p></div>
-            <div class="compte">
+            {{-- <div class="compte">
                 <p>Classe: 6 </p>
                 <p> Compte Principal: 61</p>
                 <p>Compte Divisionnaire: 618</p>
                 <p> Compte: 6184</p>
-            </div>
+            </div> --}}
         </div>
-        <div class="gestion"><p>  <span>Gestion:</span> 2023 </p></div>
+        {{-- <div class="gestion"><p>  <span>Gestion:</span> 2023 </p></div> --}}
         <div class="beneficier">
             <h3>BENEFICIAIRE : SAFIETOU BODIAN</h3>
         </div>
+        <br> <br>   
         <table>
             <thead>
             <tr>
@@ -40,7 +45,7 @@
                 <th>P.UNIT</th>
                 <th>QTE</th>
                 <th>MONTANT</th>
-                <th>Cree le </th>
+                {{-- <th>Cree le </th> --}}
             </tr>
             </thead>
             <tbody>
@@ -50,18 +55,18 @@
                         <td>{{$bonEngagement->designation}}</td>
                         <td>{{$bonEngagement->prix_unitaire}}</td>
                         <td>{{$bonEngagement->qte}}</td>
-                        <td>{{$bonEngagement->prix_unitaire}} * {{$bonEngagement->qte}}</td>
-                        <td>{{$bonEngagement->created_at->format('d-m-Y') }}</td>
+                        <td>{{$bonEngagement->prix_unitaire * $bonEngagement->qte}}</td>
+                        {{-- <td>{{$bonEngagement->created_at->format('d-m-Y') }}</td> --}}
                     </tr>
                 @endforeach
             
             </tbody>
-            <tfoot>
+            {{-- <tfoot>
             <tr>
                 <td colspan="4" class="foot">TOTAL</td>
                 <td>100000</td>
             </tr>
-            </tfoot>
+            </tfoot> --}}
         </table>
         <div class="prix">
             <p> Arrêté le présent bon d’engagement à la somme de: QUATRE VINGT QUINZE MILLE  FRANCS CFA</p>
@@ -78,9 +83,6 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <h3>JOINDRE AU BON D’ENGAGEMENT L’ORIGINAL DE LA FACTURE </h3>
-        </footer>
     </main>
 </body>
 </html>

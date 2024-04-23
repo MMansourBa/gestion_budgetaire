@@ -60,7 +60,8 @@
                                     <td class="cell"><span class="truncate">{{$depense->name}}</span></td>
                                     <td class="cell">
                                         <a class="btn-sm app-btn-secondary" href="{{route('depense.edit', $depense->id)}}">Editer</a>
-                                        <a class="btn-sm app-btn-secondary" href="{{route('depense.delete', $depense->id)}}">Supprimer</a>
+                                        <a class="btn-sm app-btn-secondary" href="javascript:void(0);" 
+                                        onclick="confirmDelete('{{ route('depense.delete', $depense->id) }}')">Supprimer</a>
                                     </td>
                                 </tr>
                             @empty
@@ -81,5 +82,16 @@
         <nav class="app-pagination">
             {{ $depenses->links() }}
         </nav><!--//app-pagination-->
+
+
+
+        <script>
+            function confirmDelete(url) {
+                if (confirm("Voulez-vous vraiment supprimer ?")) {
+                    window.location.href = url;
+                }
+            }
+        </script>
+        
 
 @endsection

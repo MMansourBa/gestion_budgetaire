@@ -92,7 +92,7 @@ class TransactionController extends Controller
         try{
             $transaction->delete();
 
-            return redirect()->route('transaction.index')->with('success_message', 'Suppresion reussi');
+            return redirect()->route('transaction.index')->with('error_message', 'Suppresion reussi');
         } catch(Exception $e){
             dd($e);
         }

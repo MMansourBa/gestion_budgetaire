@@ -20,9 +20,6 @@
             </div>
           </div>
         </div>
-        {{-- <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth 
-        </p> --}}
       </div>
     </div>
   </div>
@@ -375,7 +372,8 @@
                                         <td class="cell">{{ $transaction->date }}</td>
                                         <td class="cell">
                                             <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
-                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.delete', $transaction->id) }}">Supprimer</a>
+                                            <a class="btn-sm app-btn-secondary" href="javascript:void(0);" 
+                                            onclick="confirmDelete('{{ route('transaction.delete', $transaction->id) }}')">Supprimer</a>
                                         </td>
                                     </tr>
                                 @empty
@@ -406,25 +404,27 @@
   <div class="row">
   
   <section class="col-lg-7 connectedSortable">
-  <div class="card">
+  <div class="card" style="width: 170%;">
       <div class="card-header">
           <h3 class="card-title">
               <i class="fas fa-chart-pie mr-1"></i>
               DEPENSES
           </h3>
       </div>
-      <div class="card-body">
-          <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+      <div class="card-body" >
+        <div id="chartContainer" style="height: 370px;"></div>
       </div>
+    
       <!-- /.card-body -->
   </div>
+
   
   @php
   $link = mysqli_connect("localhost", "root", "");
   mysqli_select_db($link, "pfc");
   
   $test = array();
-  $count = 0;
+  $count = 0; 
   $res = mysqli_query($link, "SELECT * FROM transactions");
   while($row = mysqli_fetch_array($res)) {
       $test[$count]["label"] = $row["credits_alloues"];
@@ -432,6 +432,9 @@
       $count = $count + 1;
   }
   @endphp
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
   
   <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
   <script>
@@ -457,7 +460,13 @@
       }
   </script>
   
-  
+  <script>
+            function confirmDelete(url) {
+                if (confirm("Voulez-vous vraiment ?")) {
+                    window.location.href = url;
+                }
+            }
+        </script>
 
 
 

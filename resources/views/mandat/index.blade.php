@@ -80,20 +80,9 @@
                                     {{-- <td class="cell">{{$bonEngagement->date}}</td> --}}
                                     <td class="cell">
                                         <a class="btn-sn app-btn-secondary" href="{{route('mandat.edit', $mandat->id)}}">Editer</a>
-                                        <a class="btn-sn app-btn-secondary" href="{{route('mandat.delete', $mandat->id)}}">Supprimer</a>
+                                        <a class="btn-sm app-btn-secondary" href="javascript:void(0);"
+                                         onclick="confirmDelete('{{ route('mandat.delete', $mandat->id) }}')">Supprimer</a>
                                     </td>
-                                    {{-- <td class="cell">
-                                        <a class="btn-sn app-btn-secondary" href="{{route('transaction.edit', $transaction->id)}}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                                <path d="M13.88 1.933a1.244 1.244 0 0 1 1.758 1.758L2.697 15.697a1.244 1.244 0 0 1-1.758-1.758L13.88 1.933zm-1.138.84l-9.563 9.563a.244.244 0 0 0-.07.108l-1.5 5a.244.244 0 0 0 .301.301l5-1.5a.244.244 0 0 0 .108-.07l9.563-9.563-3.84-3.84z"/>
-                                            </svg>
-                                        </a>
-                                        <a class="btn-sn app-btn-secondary" href="{{route('transaction.delete', $transaction->id)}}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path d="M3.5 5.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5h-8zM2 5.5A1.5 1.5 0 0 1 3.5 4h8A1.5 1.5 0 0 1 13 5.5v1a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 2 6.5v-1z"/>
-                                            </svg>
-                                        </a> 
-                                    </td> --}}
                                     
                                 </tr>
                             @empty
@@ -118,6 +107,15 @@
     </div><!--//tab-pane-->
     
 </div><!--//tab-content-->
+
+
+<script>
+    function confirmDelete(url) {
+        if (confirm("Voulez-vous vraiment supprimer ?")) {
+            window.location.href = url;
+        }
+    }
+</script>
 
 @endsection
 

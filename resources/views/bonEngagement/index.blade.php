@@ -89,7 +89,8 @@
                                     {{-- <td class="cell">{{$bonEngagement->date}}</td> --}}
                                     <td class="cell">
                                         <a class="btn-sn app-btn-secondary" href="{{route('bonEngagement.edit', $bonEngagement->id)}}">Editer</a>
-                                        <a class="btn-sn app-btn-secondary" href="{{route('bonEngagement.delete', $bonEngagement->id)}}">Supprimer</a>
+                                        <a class="btn-sm app-btn-secondary" href="javascript:void(0);"
+                                         onclick="confirmDelete('{{ route('bonEngagement.delete', $bonEngagement->id) }}')">Supprimer</a>
                                     </td>
                                     {{-- <td class="cell">
                                         <a class="btn-sn app-btn-secondary" href="{{route('transaction.edit', $transaction->id)}}">
@@ -127,6 +128,14 @@
     </div><!--//tab-pane-->
     
 </div><!--//tab-content-->
+
+<script>
+    function confirmDelete(url) {
+        if (confirm("Voulez-vous vraiment supprimer cette catégorie de dépenses ?")) {
+            window.location.href = url;
+        }
+    }
+</script>
 
 @endsection
 
