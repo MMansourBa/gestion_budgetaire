@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('annee');
             $table->date('date');
             $table->integer('numero_be');
-            $table->foreign('numero_be')->references('numero')->on('bon_engagements');
+            $table->foreign('numero_be')->references('numero')->on('bons');
             $table->integer('numero_mandat');
             $table->integer('classe');
             $table->integer('cp');

@@ -24,9 +24,9 @@ class UpdateBonEngagementRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_bon'=>'required',
+            'numero_bon'=>'required|string',
             'numero_compte'=>'required|integer',
-            'intitules'=>'string',
+            'intitules'=>'required|string',
             'beneficiare'=>'required|string',
             'credits_alloues'=>'required|integer',
             'montant'=>'integer',
@@ -49,6 +49,7 @@ class UpdateBonEngagementRequest extends FormRequest
             'cp.required'=>'Ce champ est obligatoire',
             'cd.required'=>'Ce champ est obligatoire',
             'date.required'=>'La date est requise',
+            'intitules.required'=>'Champ requis',
         ];
     }
 }

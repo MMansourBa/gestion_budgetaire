@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\saveBonEngagementRequest;
 use App\Http\Requests\UpdateBonengagementRequest;
 use App\Models\BonEngagement;
+use App\Models\Budget;
 use App\Models\Compte;
 use App\Models\Depense;
+use App\Models\Transaction;
 use Exception;
 
 use Illuminate\Http\Request;
@@ -17,6 +19,9 @@ class BonEngagementController extends Controller
     {
         // Récupérer toutes les catégories de dépenses disponibles
         $depenses = Depense::all();
+        // $comptes = Compte::all();
+        // $budgets = Budget::all();
+        // $transactions = Transaction::all();
 
         // Initialiser un tableau pour stocker les comptes par catégorie
         $bonsParCategorie = [];
@@ -41,10 +46,11 @@ class BonEngagementController extends Controller
         $classes = Compte::all();
         $cps = Compte::all();
         $cds = Compte::all();
-        $numeros = Compte::all();
+        $numero_comptes = Compte::all();
+        $credits = Budget::all();
+        $intitules = Compte::all();
 
-
-        return view('bonEngagement.create', compact('depenses', 'classes', 'cps', 'cds', 'numeros'));
+        return view('bonEngagement.create', compact('depenses', 'classes', 'cps', 'numero_comptes', 'credits', 'intitules'));
     }
 
     //Modification 
@@ -53,10 +59,11 @@ class BonEngagementController extends Controller
         $depenses = Depense::all();
         $classes = Compte::all();
         $cps = Compte::all();
-        $cds = Compte::all();
-        $numeros = Compte::all();
+        $numero_comptes = Compte::all();
+        $credits = Budget::all();
+        $intitules = Compte::all();
 
-        return view('bonEngagement.edit', compact('bon', 'depenses', 'classes', 'cps', 'cds', 'numeros'));
+        return view('bonEngagement.edit', compact('bon', 'depenses', 'classes', 'cps', 'numero_comptes', 'credits', 'intitules'));
     }
 
 
@@ -83,8 +90,10 @@ class BonEngagementController extends Controller
         try{
             $bon->numero_bon = $request->numero_bon;
             $bon->beneficiaire = $request->beneficiaire;
+            $bon->intitules = $request->intitules;
             $bon->credits_alloues = $request->credits_alloues;
             $bon->montant = $request->montant;
+            $bon->qte = $request->qte;
             $bon->classe = $request->classe;
             $bon->cp = $request->cp;
             $bon->cd = $request->cd;

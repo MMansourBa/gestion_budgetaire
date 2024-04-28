@@ -21,6 +21,26 @@
         </a>
       </li>
       <li class="nav-item {{ active_class(['basic-ui/*']) }}">
+        <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
+          <i class="menu-icon mdi mdi-dna"></i>
+          <span class="menu-title">Categorie de depenses</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item {{ active_class(['basic-ui/buttons']) }}">
+              <a class="nav-link" href="{{ route('depense.create') }}">Nouvelle categorie de depenses</a>
+            </li>
+            {{-- <li class="nav-item {{ active_class(['basic-ui/typography']) }}">
+              <a class="nav-link" href="#">Typography</a>
+            </li> --}}
+            <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
+              <a class="nav-link" href="{{ route('depense.index') }}">Liste</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item {{ active_class(['basic-ui/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#compte" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="compte">
             <i class="menu-icon mdi mdi-file-outline"></i>
             <span class="menu-title">Nomenclature des comptes</span>
@@ -47,26 +67,7 @@
       <!--//nav-link-->
     </li>
     
-      <li class="nav-item {{ active_class(['basic-ui/*']) }}">
-        <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
-          <i class="menu-icon mdi mdi-dna"></i>
-          <span class="menu-title">Categorie de depenses</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item {{ active_class(['basic-ui/buttons']) }}">
-              <a class="nav-link" href="{{ route('depense.create') }}">Nouvelle categorie de depenses</a>
-            </li>
-            {{-- <li class="nav-item {{ active_class(['basic-ui/typography']) }}">
-              <a class="nav-link" href="#">Typography</a>
-            </li> --}}
-            <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
-              <a class="nav-link" href="{{ route('depense.index') }}">Liste</a>
-            </li>
-          </ul>
-        </div>
-      </li>
+      
 
       <li class="nav-item {{ active_class(['user-pages/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">

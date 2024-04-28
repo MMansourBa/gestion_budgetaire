@@ -17,18 +17,24 @@
                                     @csrf
                                     @method('POST')
 
-								    <div class="mb-3">
-									    <label for="setting-input-1" class="form-label">Beneficiaire<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info."><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
-  <circle cx="8" cy="4.5" r="1"/>
-</svg></span></label>
-									    <input type="text" class="form-control" id="setting-input-1" placeholder="NOM DU BENEFICIAIRE" 
-                                        name="beneficiare" value="{{old('beneficiare')}}">
-										@error('beneficiare')
+									<div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Categorie de depenses</label>
+                                        <select name="depense_id" id="depense_id" class="form-control">
+                                            <option value=""></option>
+
+
+											@foreach ($depenses as $depense)
+												<option value="{{$depense->id}}">{{$depense->name}}</option>
+											@endforeach
+                                        </select>
+
+										@error('depense_id')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
+
 									</div>
+
+								    
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">N° Compte</label>
@@ -36,7 +42,7 @@
                                             <option value=""></option>
 
 
-											@foreach ($numeros as $numero)
+											@foreach ($numero_comptes as $numero)
 												<option value="{{$numero->numero_compte}}">{{$numero->numero_compte}}</option>
 											@endforeach
                                         </select>
@@ -48,7 +54,14 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Intitules</label>
-									    <input type="text" class="form-control" id="setting-input-3" name="intitules" placeholder="Intitules" value="{{old('intitules')}}">
+									    <select name="intitules" id="intitules" class="form-control">
+                                            <option value=""></option>
+
+
+											@foreach ($intitules as $intitule)
+												<option value="{{$intitule->intitules}}">{{$intitule->intitules}}</option>
+											@endforeach
+                                        </select>
 										@error('intitules')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
@@ -68,29 +81,16 @@
 										 <div class="text-danger">{{$message}}</div>
 									 @enderror
 									</div>
+
 									<div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Montant</label>
-									    <input type="number" class="form-control" id="setting-input-3" name="montant" placeholder="Montant" value="{{old('montant')}}">
-										@error('montant')
+									    <label for="setting-input-1" class="form-label">Beneficiaire</label>
+									    <input type="text" class="form-control" id="setting-input-1" placeholder="NOM DU BENEFICIAIRE" 
+                                        name="beneficiare" value="{{old('beneficiare')}}">
+										@error('beneficiare')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
 									</div>
-									<div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Categorie de depenses</label>
-                                        <select name="depense_id" id="depense_id" class="form-control">
-                                            <option value=""></option>
-
-
-											@foreach ($depenses as $depense)
-												<option value="{{$depense->id}}">{{$depense->name}}</option>
-											@endforeach
-                                        </select>
-
-										@error('depense_id')
-											<div class="text-danger">{{$message}}</div>
-										@enderror
-
-									</div>
+									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Classe</label>
                                         <select name="classe" id="classe" class="form-control">
@@ -125,16 +125,26 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Compte Divisionnire</label>
-                                        <select name="cd" id="cd" class="form-control">
-                                            <option value=""></option>
-
-
-											@foreach ($cds as $cd)
-												<option value="{{$cd->cd}}">{{$cd->cd}}</option>
-											@endforeach
-                                        </select>
-
+                                        <input type="number" class="form-control" id="setting-input-3" name="cd" 
+										placeholder="cd" value="{{old('cd')}}">
 										@error('cd')
+											<div class="text-danger">{{$message}}</div>
+										@enderror
+
+									</div>
+
+									<div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Montant</label>
+									    <input type="number" class="form-control" id="setting-input-3" name="montant" placeholder="Montant" value="{{old('montant')}}">
+										@error('montant')
+											<div class="text-danger">{{$message}}</div>
+										@enderror
+									</div>
+									<div class="mb-3">
+									    <label for="setting-input-3" class="form-label">Quantite</label>
+                                        <input type="number" class="form-control" id="setting-input-3" name="qte" 
+										placeholder="Qte" value="{{old('qte')}}">
+										@error('qte')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
 
