@@ -4,7 +4,7 @@
 
 <div class="row g-3 mb-4 align-items-center justify-content-between">
     <div class="col-auto">
-        <h1 class="app-page-title mb-0">Dépenses</h1>
+        <h1 class="app-page-title mb-0">DEPENSES</h1>
     </div>
     <div class="col-auto">
          <div class="page-utilities">
@@ -20,16 +20,7 @@
                     </form>
                     
                 </div><!--//col-->
-                {{-- <div class="col-auto">
-                    
-                    <select class="form-select w-auto" >
-                          <option selected value="option-1">All</option>
-                          <option value="option-2">This week</option>
-                          <option value="option-3">This month</option>
-                          <option value="option-4">Last 3 months</option>
-                          
-                    </select>
-                </div> --}}
+                
                 <div class="col-auto">                          
                     <a class="btn app-btn-secondary" href="{{ route('transaction.create') }}">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download me-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -55,55 +46,68 @@
     <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
         @foreach ($transactionsParCategorie as $categorie => $transactions)
             <h2>{{ $categorie }}</h2>
-            <div class="app-card app-card-orders-table shadow-sm mb-5">
-                <div class="app-card-body">
-                    <div class="table-responsive">
-                        <table class="table app-table-hover mb-0 text-left">
-                            <thead>
-                                <tr>
-                                    <th class="cell">Numero compte</th>
-                                    <th class="cell">Intitulé</th>
-                                    <th class="cell">Crédits alloués</th>
-                                    <th class="cell">N°</th>
-                                    <th class="cell">Intitulé dépense mandaté</th>
-                                    <th class="cell">Montant</th>
-                                    <th class="cell">Solde disponible</th>
-                                    <th class="cell">Date</th>
-                                    <th class="cell">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($transactions as $transaction)
+            @foreach ($transactions->groupBy('numero_compte') as $numeroCompte => $transactionsParNumeroCompte)
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
                                     <tr>
-                                        <td class="cell">{{ $transaction->numero_compte }}</td>
-                                        <td class="cell">{{ $transaction->intitule }}</td>
-                                        <td class="cell">{{ $transaction->credits_alloues }} FCFA</td>
-                                        <td class="cell">{{ $transaction->numero_depense }}</td>
-                                        <td class="cell">{{ $transaction->titre_depense }}</td>
-                                        <td class="cell">{{ $transaction->montant }}</td>
-                                        <td class="cell">{{ $transaction->solde_disponible }} FCFA</td>
-                                        <td class="cell">{{ $transaction->date }}</td>
-                                        <td class="cell">
-                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
-                                            <a class="btn-sm app-btn-secondary" href="javascript:void(0);" onclick="confirmDelete('{{ route('transaction.delete', $transaction->id) }}')">Supprimer</a>
-                                        </td>
-                                        
+                                        <th class="cell">Numero compte</th>
+                                        <th class="cell">Intitulé</th>
+                                        <th class="cell">Crédits alloués</th>
+                                        <th class="cell">N°</th>
+                                        <th class="cell">Intitulé dépense mandaté</th>
+                                        <th class="cell">Montant</th>
+                                        <th class="cell">Payes</th>
+                                        <th class="cell">Solde disponible</th>
+                                        <th class="cell">Date</th>
+                                        <th class="cell">Action</th>
                                     </tr>
-                                @empty
+                                </thead>
+                                <tbody>
+                                    @php $firstTransaction = $transactionsParNumeroCompte->first(); @endphp
                                     <tr>
-                                        <td class="cell" colspan="9"><center>Aucune dépense</center></td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->numero_compte }}</td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->intitules }}</td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->credits_alloues }} FCFA</td>
+                                        @foreach ($transactionsParNumeroCompte as $transaction)
+                                            <td class="cell">{{ $transaction->numero_bon }}</td>
+                                            <td class="cell">{{ $transaction->intitule }}</td>
+                                            <td class="cell">{{ $transaction->montant }} FCFA</td>
+                                            <td class="cell">{{ $transaction->payes }}</td>
+                                            <td class="cell">
+                                                <?php
+                                                $creditAlloue = $transaction->credits_alloues;
+                                                $montantTotalTransactionsPrecedentes = $transactionsParNumeroCompte->where('id', '<=', $transaction->id)->sum('montant');
+                                                $soldeDisponible = $creditAlloue - $montantTotalTransactionsPrecedentes;
+                                                ?>
+                                                {{ $soldeDisponible }} FCFA
+                                            </td>
+                                            <td class="cell">{{ $transaction->date }}</td>
+                                            <td class="cell">
+                                                <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
+                                                <a class="btn-sm app-btn-secondary" href="javascript:void(0);" onclick="confirmDelete('{{ route('transaction.delete', $transaction->id) }}')">Supprimer</a>
+                                            </td>
+                                        </tr>
+                                        @if (!$loop->last)
+                                            <tr>
+                                        @endif
+                                    @endforeach
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div><!--//table-responsive-->
-                </div><!--//app-card-body-->
-            </div><!--//app-card-->
+                                </tbody>
+                            </table>
+                        </div><!--//table-responsive-->
+                    </div><!--//app-card-body-->
+                </div><!--//app-card-->
+            @endforeach
         @endforeach
         <nav class="app-pagination">
             {{ $transactions->links() }}
         </nav><!--//app-pagination-->
     </div><!--//tab-pane-->
+    
+    
 </div><!--//tab-content-->
 
 <script>
@@ -115,3 +119,4 @@
 </script>
 
 @endsection
+

@@ -65,7 +65,7 @@ class AuthController extends Controller
     }
 
     public function dashboard(){
-        $totalBudget = DB::table('transactions')->sum('credits_alloues');
+        $totalBudget = DB::table('budgets')->sum('credits_alloues');
 
         $totalDepense = DB::table('transactions')->sum('montant');
         

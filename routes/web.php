@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BonEngagementController;
 use App\Http\Controllers\BonPdfController;
+use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\CompteController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DepenseController;
@@ -33,6 +35,26 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     });
 
+    Route::prefix('compte')->group(function () {
+        Route::get('/', [CompteController::class, 'index'])->name('compte.index');
+        Route::get('/create', [CompteController::class, 'create'])->name('compte.create');
+        Route::post('/create', [CompteController::class, 'store'])->name('compte.store');
+        Route::get('/edit/{compte}', [CompteController::class, 'edit'])->name('compte.edit');
+        Route::put('/update/{compte}', [CompteController::class, 'update'])->name('compte.update');
+        Route::get('/{compte}', [CompteController::class, 'delete'])->name('compte.delete');
+        // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');
+    });
+
+    Route::prefix('budget')->group(function () {
+        Route::get('/', [BudgetController::class, 'index'])->name('budget.index');
+        Route::get('/create', [BudgetController::class, 'create'])->name('budget.create');
+        Route::post('/create', [BudgetController::class, 'store'])->name('budget.store');
+        Route::get('/edit/{budget}', [BudgetController::class, 'edit'])->name('budget.edit');
+        Route::put('/update/{budget}', [BudgetController::class, 'update'])->name('budget.update');
+        Route::get('/{budget}', [BudgetController::class, 'delete'])->name('budget.delete');
+        // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');
+    });
+
     Route::prefix('depenses')->group(function () {
         Route::get('/', [DepenseController::class, 'index'])->name('depense.index');
         Route::get('/create', [DepenseController::class, 'create'])->name('depense.create');
@@ -58,9 +80,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('/', [BonEngagementController::class, 'index'])->name('bonEngagement.index');
         Route::get('/create', [BonEngagementController::class, 'create'])->name('bonEngagement.create');
         Route::post('/create', [BonEngagementController::class, 'store'])->name('bonEngagement.store');
-        Route::get('/edit/{bonEngagement}', [BonEngagementController::class, 'edit'])->name('bonEngagement.edit');
-        Route::put('/update/{bonEngagement}', [BonEngagementController::class, 'update'])->name('bonEngagement.update');
-        Route::get('/{bonEngagement}', [BonEngagementController::class, 'delete'])->name('bonEngagement.delete');
+        Route::get('/edit/{bon}', [BonEngagementController::class, 'edit'])->name('bonEngagement.edit');
+        Route::put('/update/{bon}', [BonEngagementController::class, 'update'])->name('bonEngagement.update');
+        Route::get('/{bon}', [BonEngagementController::class, 'delete'])->name('bonEngagement.delete');
         Route::get('/bonPDF/{id}/download-pdf', [BonPdfController::class, 'bonPdf'])->name('bonEngagement.bonPDF');
 
         // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');

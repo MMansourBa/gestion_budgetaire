@@ -38,9 +38,6 @@
             </div>
           </div>
         </div>
-        {{-- <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
-        </p> --}}
       </div>
     </div>
   </div>
@@ -58,9 +55,6 @@
             </div>
           </div>
         </div>
-        {{-- <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales 
-        </p> --}}
       </div>
     </div>
   </div>
@@ -78,9 +72,6 @@
             </div>
           </div>
         </div>
-        {{-- <p class="text-muted mt-3 mb-0 text-left text-md-center text-xl-left">
-          <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise sales
-        </p> --}}
       </div>
     </div>
   </div>
@@ -336,62 +327,71 @@
     </div>
   </div>
 </div> --}}
-<br> <br>
+<br> 
 <div class="row">
   <div class="tab-content" id="orders-table-tab-content">
     <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
         @foreach ($transactionsParCategorie as $categorie => $transactions)
             <h2>{{ $categorie }}</h2>
-            <div class="app-card app-card-orders-table shadow-sm mb-5">
-                <div class="app-card-body">
-                    <div class="table-responsive">
-                        <table class="table app-table-hover mb-0 text-left">
-                            <thead>
-                                <tr>
-                                    <th class="cell">Numero compte</th>
-                                    <th class="cell">Intitulé</th>
-                                    <th class="cell">Crédits alloués</th>
-                                    <th class="cell">N°</th>
-                                    <th class="cell">Intitulé dépense mandaté</th>
-                                    <th class="cell">Montant</th>
-                                    <th class="cell">Solde disponible</th>
-                                    <th class="cell">Date</th>
-                                    <th class="cell">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($transactions as $transaction)
+            @foreach ($transactions->groupBy('numero_compte') as $numeroCompte => $transactionsParNumeroCompte)
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
                                     <tr>
-                                        <td class="cell">{{ $transaction->numero_compte }}</td>
-                                        <td class="cell">{{ $transaction->intitule }}</td>
-                                        <td class="cell">{{ $transaction->credits_alloues }} FCFA</td>
-                                        <td class="cell">{{ $transaction->numero_depense }}</td>
-                                        <td class="cell">{{ $transaction->titre_depense }}</td>
-                                        <td class="cell">{{ $transaction->montant }}</td>
-                                        <td class="cell">{{ $transaction->solde_disponible }} FCFA</td>
-                                        <td class="cell">{{ $transaction->date }}</td>
-                                        <td class="cell">
-                                            <a class="btn-sn app-btn-secondary" href="{{ route('transaction.edit', $transaction->id) }}">Editer</a>
-                                            <a class="btn-sm app-btn-secondary" href="javascript:void(0);" 
-                                            onclick="confirmDelete('{{ route('transaction.delete', $transaction->id) }}')">Supprimer</a>
-                                        </td>
+                                        <th class="cell">Numero compte</th>
+                                        <th class="cell">Intitulé</th>
+                                        <th class="cell">Crédits alloués</th>
+                                        <th class="cell">N°</th>
+                                        <th class="cell">Intitulé dépense mandaté</th>
+                                        <th class="cell">Montant</th>
+                                        <th class="cell">Payes</th>
+                                        <th class="cell">Solde disponible</th>
+                                        <th class="cell">Date</th>
                                     </tr>
-                                @empty
+                                </thead>
+                                <tbody>
+                                    @php $firstTransaction = $transactionsParNumeroCompte->first(); @endphp
                                     <tr>
-                                        <td class="cell" colspan="9"><center>Aucune dépense</center></td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->numero_compte }}</td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->intitules }}</td>
+                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->credits_alloues }} FCFA</td>
+                                        @foreach ($transactionsParNumeroCompte as $transaction)
+                                            <td class="cell">{{ $transaction->numero_bon }}</td>
+                                            <td class="cell">{{ $transaction->intitule }}</td>
+                                            <td class="cell">{{ $transaction->montant }} FCFA</td>
+                                            <td class="cell">{{ $transaction->payes }}</td>
+                                            <td class="cell">
+                                                <?php
+                                                $creditAlloue = $transaction->credits_alloues;
+                                                $montantTotalTransactionsPrecedentes = $transactionsParNumeroCompte->where('id', '<=', $transaction->id)->sum('montant');
+                                                $soldeDisponible = $creditAlloue - $montantTotalTransactionsPrecedentes;
+                                                ?>
+                                                {{ $soldeDisponible }} FCFA
+                                            </td>
+                                            <td class="cell">{{ $transaction->date }}</td>
+                                        </tr>
+                                        @if (!$loop->last)
+                                            <tr>
+                                        @endif
+                                    @endforeach
                                     </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div><!--//table-responsive-->
-                </div><!--//app-card-body-->
-            </div><!--//app-card-->
+                                </tbody>
+                            </table>
+                        </div><!--//table-responsive-->
+                    </div><!--//app-card-body-->
+                </div><!--//app-card-->
+            @endforeach
         @endforeach
         <nav class="app-pagination">
             {{ $transactions->links() }}
         </nav><!--//app-pagination-->
     </div><!--//tab-pane-->
-  </div>
+    
+    
+</div><!--//tab-content-->
+
 </div>
 
 
@@ -462,7 +462,7 @@
   
   <script>
             function confirmDelete(url) {
-                if (confirm("Voulez-vous vraiment ?")) {
+                if (confirm("Voulez-vous vraiment supprimer ?")) {
                     window.location.href = url;
                 }
             }

@@ -7,15 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasFactory;
-    protected $guarded = [''];
+    protected $fillable = ['depense_id', 'numero_compte', 'intitules', 'credits_alloues', 'numero_bon', 
+    'intitule', 'montant', 'payes', 'date'];
 
-    /**
-     * Get the user that owns the Employer
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    // public function employer()
+    public function compte()
+    {
+        return $this->belongsTo(Compte::class);
+    }
+
+    public function budget()
+    {
+        return $this->belongsTo(Budget::class);
+    }
+
     public function depense()
     {
         return $this->belongsTo(Depense::class);

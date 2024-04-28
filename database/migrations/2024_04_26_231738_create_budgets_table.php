@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bon_engagements', function (Blueprint $table) {
+        Schema::create('budgets', function (Blueprint $table) {
             $table->id();
-            $table->integer('numero')->unique();
-            $table->string('designation');
-            $table->integer('prix_unitaire');
-            $table->integer('qte');
+            $table->integer('credits_alloues');
+            $table->integer('numero_compte')->unique();
+            $table->foreign('numero_compte')->references('numero_compte')->on('comptes');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bon_engagements');
+        Schema::dropIfExists('budgets');
     }
 };

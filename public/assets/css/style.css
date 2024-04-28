@@ -6,7 +6,9 @@ body{
 }
 
 .conatiner{
-    width: 1000px;
+    /* width: 1000px; */
+    width: 1500px;
+    height: 750px;
     margin: 30px auto;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgb(119, 109, 109), -5px -5px 10px rgb(163, 154, 154);
@@ -39,7 +41,7 @@ header .img img{
 }
 
 .navbar {
-    margin-left: 35%;
+    margin-left: 55%;
 }
 
 .navbar ul{
@@ -70,7 +72,7 @@ header .img img{
 
 /* CSS pour changer le fond des liens en bleu au survol */
 .navbar ul li a:hover {
-    background-color: rgba(22, 63, 245, 0.74);
+    background-color: rgba(87, 219, 169, 0.74);
     color: white; /* Changer la couleur du texte pour le contraste */
     border-radius: 15px;
     /*padding: 5px; */ 
@@ -84,12 +86,12 @@ header .img img{
 }
 
 .body-content .b-title{
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 .body-content .b-title h1{
-    font-size: 30px;
-    margin-top: 100px;
+    font-size: 40px;
+    margin-top: 150px;
 }
 
 .body-content .b-title span{
@@ -109,7 +111,8 @@ header .img img{
 .body-content .b-title .icons{
 
     display: flex;
-    margin-top: 80px;
+    margin-top: 150px;
+    height: 100px;
 }
 
 .body-content .b-title .icons img{
@@ -123,8 +126,8 @@ header .img img{
 }
 
 .body-content .b-img img{
-    width: 480px;
-    height: 480px;
+    width: 500px;
+    height: 600px;
 }
 
 .img img{

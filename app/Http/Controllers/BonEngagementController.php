@@ -2,31 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BonEngagement;
 use App\Http\Requests\saveBonEngagementRequest;
-use App\Http\Requests\UpdateBonEngagementRequest;
+use App\Http\Requests\UpdateBonengagementRequest;
+use App\Models\BonEngagement;
+use App\Models\Compte;
+use App\Models\Depense;
 use Exception;
-use PDF;
+
 use Illuminate\Http\Request;
 
 class BonEngagementController extends Controller
 {
     public function index()
     {
-        $bonEngagements = BonEngagement::paginate(10);
-        return view('bonEngagement.index', compact('bonEngagements'));
+        // Récupérer toutes les catégories de dépenses disponibles
+        $depenses = Depense::all();
+
+        // Initialiser un tableau pour stocker les comptes par catégorie
+        $bonsParCategorie = [];
+
+        // Pour chaque catégorie, récupérer les bons associées
+        foreach ($depenses as $depense) {
+            // Récupérer les bons associées à cette catégorie
+            $depenses = BonEngagement::where('depense_id', $depense->id)->paginate(10);
+
+            // Stocker les bons dans le tableau $bonsParCategorie
+            $bonsParCategorie[$depense->name] = $depenses;
+        }
+
+        // Passer les données à la vue
+        return view('bonEngagement.index', compact('bonsParCategorie'));
     }
 
     //Ajout 
     public function create()
     {
-        return view('bonEngagement.create');
+        $depenses = Depense::all();
+        $classes = Compte::all();
+        $cps = Compte::all();
+        $cds = Compte::all();
+        $numeros = Compte::all();
+
+
+        return view('bonEngagement.create', compact('depenses', 'classes', 'cps', 'cds', 'numeros'));
     }
 
     //Modification 
-    public function edit(BonEngagement $bonEngagement)
+    public function edit(BonEngagement $bon)
     {
-        return view('bonEngagement.edit', compact('bonEngagement'));
+        $depenses = Depense::all();
+        $classes = Compte::all();
+        $cps = Compte::all();
+        $cds = Compte::all();
+        $numeros = Compte::all();
+
+        return view('bonEngagement.edit', compact('bon', 'depenses', 'classes', 'cps', 'cds', 'numeros'));
     }
 
 
@@ -48,17 +78,23 @@ class BonEngagementController extends Controller
     }
 
     //Mis a jour
-    public function update(BonEngagement $bonEngagement, UpdateBonEngagementRequest $request)
+    public function update(BonEngagement $bon, UpdateBonEngagementRequest $request)
     {
         try{
-            $bonEngagement->numero = $request->numero;
-            $bonEngagement->designation = $request->designation;
-            $bonEngagement->prix_unitaire = $request->prix_unitaire;
-            $bonEngagement->qte = $request->qte;
+            $bon->numero_bon = $request->numero_bon;
+            $bon->beneficiaire = $request->beneficiaire;
+            $bon->credits_alloues = $request->credits_alloues;
+            $bon->montant = $request->montant;
+            $bon->classe = $request->classe;
+            $bon->cp = $request->cp;
+            $bon->cd = $request->cd;
+            $bon->numero_compte = $request->numero_compte;
+            $bon->depense_id = $request->depense_id;
+            $bon->date = $request->date;
 
-            $bonEngagement->update();
+            $bon->update();
 
-            return redirect()->route('bonEngagement.index')->with('success_message', 'Bon d\'engagement modifié');
+            return redirect()->route('bonEngagement.index')->with('success_message', 'Classe de bonEngagement modifié');
 
         }catch(Exception $e) {
             dd($e);
@@ -68,17 +104,16 @@ class BonEngagementController extends Controller
 
 
     //Suppression 
-    public function delete(BonEngagement $bonEngagement)
+    public function delete(BonEngagement $bon)
     {
         try{
-            $bonEngagement->delete();
+            $bon->delete();
 
-            return redirect()->route('bonEngagement.index')->with('success_message', 'Bon d\'engagement supprimé');
+            return redirect()->route('bonEngagement.index')->with('success_message', 'Classe de compte supprimé');
 
         }catch(Exception $e) {
             dd($e);
         }
         
     }
-
 }

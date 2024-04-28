@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTransactionRequest extends FormRequest
+class saveCompteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,23 +25,23 @@ class UpdateTransactionRequest extends FormRequest
     {
         return [
             'depense_id'=>'required|integer',
-            // 'numero_compte'=>'required|unique:transactions,numero_compte',
+            'classe'=>'required|integer',
+            'cp'=>'required|integer',
+            'cd'=>'required|integer',
+            'numero_compte'=>'required|unique:comptes,numero_compte',
             'intitules'=>'required|string',
-            'credits_alloues'=>'required|integer',
-            // 'numero_depense'=>'integer',
-            // 'titre_depense'=>'string',
-            // 'montant'=>'integer',
-            'date'=>'required|date',
         ];
     }
+
     public function messages()
     {
         return [
             'depense_id.required'=>'La categorie de depense est requis',
             'numero_compte.required'=>'Le numero de compte est obligatoire',
-            'intitules.required'=>'Ce champ est obligatoire',
-            'credits_alloues.required'=>'L\'allocation du budget est requis',
-            'date.required'=>'La date est requis',
+            'classe.required'=>'La classe est obligatoire',
+            'cp.required'=>'Le numero du compte principal est obligatoire',
+            'cd.required'=>'Le numero du compte divisionnaire est obligatoire',
+            'intitules.required'=>'Champ obligatoire',
         ];
     }
 }

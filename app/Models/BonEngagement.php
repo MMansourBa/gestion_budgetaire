@@ -8,7 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class BonEngagement extends Model
 {
     use HasFactory;
-    protected $fillable = ['numero', 'designation', 'prix_unitaire', 'qte'];
+    protected $guarded = [''];
 
+    // public function depense()
+    // {
+    //     return $this->belongsTo(Depense::class);
+    // }
+
+    
+    public function getSoldeDisponibleAttribute()
+    {
+        return $this->credits_alloues - $this->montant;
+    }
 }
 
