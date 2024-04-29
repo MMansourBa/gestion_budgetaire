@@ -14,7 +14,7 @@ class BonPdfController extends Controller
         $bonEngagement = BonEngagement::get();
 
         $data = [
-            'title' => 'BON D\'ENGAGEMENT N°',
+            'title' => 'BON D\'ENGAGEMENT N° ',
             'date' => date('d/m/Y'),
             'bonEngagements' => $bonEngagement
         ];
