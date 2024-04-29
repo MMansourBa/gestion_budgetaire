@@ -63,8 +63,6 @@
                                 <th class="cell">NOM</th>
                                 <th class="cell">SOMME</th>
                                 <th class="cell">DATE D'EMISSION</th>
-                                <th class="cell">N° BE</th>
-                                {{-- <th class="cell">Date</th> --}}
                                 <th class="cell">Action</th>
                             </tr>
                         </thead>
@@ -73,10 +71,9 @@
                             @forelse ($mandats as $mandat)
                                 <tr>
                                     <td class="cell">{{$mandat->numero_mandat}}</td>
-                                    <td class="cell">{{$mandat->nom}}</td>
-                                    <td class="cell">{{$mandat->somme}} FCFA</td>
+                                    <td class="cell">{{$mandat->beneficiaire}}</td>
+                                    <td class="cell">{{$mandat->montant}} FCFA</td>
                                     <td class="cell">{{$mandat->date}}</td>
-                                    <td class="cell">{{$mandat->numero_be}}</td>
                                     {{-- <td class="cell">{{$bonEngagement->date}}</td> --}}
                                     <td class="cell">
                                         <a class="btn-sn app-btn-secondary" href="{{route('mandat.edit', $mandat->id)}}">Editer</a>

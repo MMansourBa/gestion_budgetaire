@@ -52,16 +52,10 @@ class MandatController extends Controller
      public function update(UpdateMandatRequest $request, Mandat $mandat)
      {
          try{
-             $mandat->nom = $request->nom;
-             $mandat->somme = $request->somme;
-             $mandat->annee = $request->annee;
+             $mandat->beneficiaire = $request->beneficiaire;
+             $mandat->montant = $request->montant;
              $mandat->date = $request->date;
              $mandat->numero_mandat = $request->numero_mandat;
-             $mandat->numero_be = $request->numero_be;
-             $mandat->classe = $request->classe;
-             $mandat->cp = $request->cp;
-             $mandat->cd = $request->cd;
-             $mandat->compte = $request->compte;
              $mandat->objet = $request->objet;
  
              $mandat->update();

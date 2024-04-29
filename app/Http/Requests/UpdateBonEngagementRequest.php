@@ -27,7 +27,7 @@ class UpdateBonEngagementRequest extends FormRequest
             'numero_bon'=>'required|string',
             'numero_compte'=>'required|integer',
             'intitules'=>'required|string',
-            'beneficiare'=>'required|string',
+            'beneficiaire'=>'required|string',
             'credits_alloues'=>'required|integer',
             'montant'=>'integer',
             'depense_id'=>'required|integer',
@@ -41,7 +41,7 @@ class UpdateBonEngagementRequest extends FormRequest
     {
         return [
             'numero_bon.required' => 'Le numero du bon est obligatoire',
-            'beneficiare.required'=>'Champ obligatoire',
+            'beneficiaire.required'=>'Champ obligatoire',
             'numero_compte'=>'Le numero de compte est requis',
             'credits_alloues.required'=>'Champ obligatoire',
             'depense_id.required'=>'Champ obligatoire',

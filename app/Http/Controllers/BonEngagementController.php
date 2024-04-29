@@ -84,7 +84,7 @@ class BonEngagementController extends Controller
         
     }
 
-    //Mis a jour
+    //Mis a jour    
     public function update(BonEngagement $bon, UpdateBonEngagementRequest $request)
     {
         try{

@@ -9,21 +9,18 @@ class Mandat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nom',
-        'somme',
-        'annee',
+        'beneficiaire',
         'date',
-        'numero_be',
         'numero_mandat',
-        'classe',
-        'cp',
-        'cd',
-        'compte',
+        'montant',
         'objet',
     ];
 
     public function bonEngagement()
     {
-        return $this->belongsTo(BonEngagement::class, 'numero_be');
+        return $this->belongsTo(BonEngagement::class, 'numero_bon');
+        return $this->belongsTo(BonEngagement::class, 'beneficiaire');
+        return $this->belongsTo(BonEngagement::class, 'intitules');
+        return $this->belongsTo(BonEngagement::class, 'montant');
     }
 }

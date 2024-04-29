@@ -16,33 +16,38 @@
       </li>
       <li class="nav-item {{ active_class(['/']) }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
-          <i class="menu-icon mdi mdi-television"></i>
+          {{-- <i class="menu-icon mdi mdi-television"></i> --}}
+          <i class="menu-icon fa-solid fa-gauge"></i>
           <span class="menu-title">Tableau de bord</span>
         </a>
       </li>
       <li class="nav-item {{ active_class(['basic-ui/*']) }}">
-        <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
-          <i class="menu-icon mdi mdi-dna"></i>
+        {{-- <a class="nav-link" data-toggle="collapse" href="#basic-ui" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="basic-ui">
+          
+          <i class="menu-icon fa-solid fa-layer-group"></i>
           <span class="menu-title">Categorie de depenses</span>
           <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
+        </a> --}}
+        <a class="nav-link" href="{{ route('depense.index') }}">
+          {{-- <i class="menu-icon mdi mdi-file-outline"></i> --}}
+          <i class="menu-icon fa-solid fa-layer-group"></i>
+          <span class="menu-title">Categorie de depenses</span>
+      </a>
+        {{-- <div class="collapse {{ show_class(['basic-ui/*']) }}" id="basic-ui">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item {{ active_class(['basic-ui/buttons']) }}">
               <a class="nav-link" href="{{ route('depense.create') }}">Nouvelle categorie de depenses</a>
             </li>
-            {{-- <li class="nav-item {{ active_class(['basic-ui/typography']) }}">
-              <a class="nav-link" href="#">Typography</a>
-            </li> --}}
             <li class="nav-item {{ active_class(['basic-ui/dropdowns']) }}">
               <a class="nav-link" href="{{ route('depense.index') }}">Liste</a>
             </li>
           </ul>
-        </div>
+        </div> --}}
       </li>
       <li class="nav-item {{ active_class(['basic-ui/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#compte" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="compte">
-            <i class="menu-icon mdi mdi-file-outline"></i>
+            {{-- <i class="menu-icon mdi mdi-file-outline"></i> --}}
+            <i class="menu-icon fa-solid fa-hashtag"></i>
             <span class="menu-title">Nomenclature des comptes</span>
             <i class="menu-arrow"></i>
         </a>
@@ -61,7 +66,8 @@
       <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
       
       <a class="nav-link" href="{{ route('budget.index') }}">
-          <i class="menu-icon mdi mdi-file-outline"></i>
+          {{-- <i class="menu-icon mdi mdi-file-outline"></i> --}}
+          <i class="menu-icon fa-solid fa-money-bill"></i>
           <span class="menu-title">Budget</span>
       </a>
       <!--//nav-link-->
@@ -71,7 +77,8 @@
 
       <li class="nav-item {{ active_class(['user-pages/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
-          <i class="menu-icon mdi mdi-lock-outline"></i>
+          {{-- <i class="menu-icon mdi mdi-lock-outline"></i> --}}
+          <i class="menu-icon fa-solid fa-hand-holding-dollar"></i>
           <span class="menu-title">Depenses</span>
           <i class="menu-arrow"></i>
         </a>
@@ -92,7 +99,8 @@
       </li>
       <li class="nav-item {{ active_class(['basic-ui/*']) }}">
         <a class="nav-link" data-toggle="collapse" href="#bon-engagement-menu" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="bon-engagement-menu">
-            <i class="menu-icon mdi mdi-file-outline"></i>
+            {{-- <i class="menu-icon mdi mdi-file-outline"></i> --}}
+            <i class="menu-icon fa-solid fa-file-invoice-dollar"></i>
             <span class="menu-title">Bon d'engagement</span>
             <i class="menu-arrow"></i>
         </a>
@@ -110,7 +118,8 @@
     
     <li class="nav-item {{ active_class(['basic-ui/*']) }}">
       <a class="nav-link" data-toggle="collapse" href="#mandat-menu" aria-expanded="{{ is_active_route(['basic-ui/*']) }}" aria-controls="mandat-menu">
-          <i class="menu-icon mdi mdi-file-outline"></i>
+          {{-- <i class="menu-icon mdi mdi-file-outline"></i> --}}
+          <i class="menu-icon fa-solid fa-landmark"></i>
           <span class="menu-title">Mandat</span>
           <i class="menu-arrow"></i>
       </a>

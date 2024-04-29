@@ -15,18 +15,15 @@ return new class extends Migration
     {
         Schema::create('mandats', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->integer('somme');
-            $table->integer('annee');
+            $table->string('numero_mandat');
+            $table->foreign('numero_mandat')->references('numero_bon')->on('bon_engagements');
+            $table->string('objet');
+            $table->foreign('objet')->references('intitules')->on('bon_engagements');
+            $table->string('beneficiaire'); 
+            $table->foreign('beneficiaire')->references('beneficiaire')->on('bon_engagements');
+            $table->integer('montant');
+            $table->foreign('montant')->references('montant')->on('bon_engagements');
             $table->date('date');
-            $table->integer('numero_be');
-            $table->foreign('numero_be')->references('numero')->on('bons');
-            $table->integer('numero_mandat');
-            $table->integer('classe');
-            $table->integer('cp');
-            $table->integer('cd');
-            $table->integer('compte');
-            $table->text('objet');
             $table->timestamps();
         });
     }

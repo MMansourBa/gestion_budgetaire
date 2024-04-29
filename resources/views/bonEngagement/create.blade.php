@@ -85,8 +85,8 @@
 									<div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Beneficiaire</label>
 									    <input type="text" class="form-control" id="setting-input-1" placeholder="NOM DU BENEFICIAIRE" 
-                                        name="beneficiare" value="{{old('beneficiare')}}">
-										@error('beneficiare')
+                                        name="beneficiaire" value="{{old('beneficiaire')}}">
+										@error('beneficiaire')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
 									</div>

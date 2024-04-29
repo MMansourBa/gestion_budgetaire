@@ -24,34 +24,22 @@ class UpdateMandatRequest extends FormRequest
     public function rules()
     {
         return [
-            'nom'=>'required|string',
-            'somme'=>'required|integer',
-            'annee'=>'required|integer',
+            'beneficiaire'=>'required|string',
+            'montant'=>'required|integer',
             'date'=>'required|date',
-            'numero_mandat'=>'required|integer',
-            'numero_be'=>'required|integer',
-            'classe'=>'required|integer',
-            'cp'=>'required|integer',
-            'cd'=>'required|integer',
-            'compte'=>'required|integer',
-            'objet'=>'required|string'
+            'numero_mandat'=>'required|string',
+            'objet'=>'required|string',
         ];
     }
 
     public function messages()
     {
         return [
-            'nom.required'=>'Le nom est requis',
-            'somme.required'=>'Champ obligatoire',
-            'annee.required'=>'Champ obligatoire',
+            'beneficiaire.required'=>'Le nom est requis',
+            'objet.required'=>'Champ requis',
+            'montant.required'=>'Champ obligatoire',
             'date.required'=>'Champ obligatoire',
             'numero_mandat.required'=>'Champ obligatoire',
-            'numero_be.required'=>'Champ obligatoire',
-            'classe.required'=>'Champ obligatoire',
-            'cp.required'=>'Champ obligatoire',
-            'cd.required'=>'Champ obligatoire',
-            'compte.required'=>'Champ obligatoire',
-            'objet.required'=>'Champ obligatoire',
         ];
     }
 }

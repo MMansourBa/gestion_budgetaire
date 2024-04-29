@@ -53,6 +53,7 @@
                             <table class="table app-table-hover mb-0 text-left">
                                 <thead>
                                     <tr>
+                                        <center>
                                         <th class="cell">Numero compte</th>
                                         <th class="cell">Intitulé</th>
                                         <th class="cell">Crédits alloués</th>
@@ -63,6 +64,7 @@
                                         <th class="cell">Solde disponible</th>
                                         <th class="cell">Date</th>
                                         <th class="cell">Action</th>
+                                        </center>
                                     </tr>
                                 </thead>
                                 <tbody>

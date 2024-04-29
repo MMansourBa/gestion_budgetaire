@@ -60,10 +60,10 @@
                                     <th class="cell">Intitulé</th>
                                     <th class="cell">Crédits alloués</th>
                                     <th class="cell">N°</th>
-                                    {{-- <th class="cell">Intitulé dépense mandaté</th> --}}
                                     <th class="cell">Montant</th>
                                     <th class="cell">Solde disponible</th>
                                     <th class="cell">Date</th>
+                                    <th class="cell">Telecharger</th>
                                     <th class="cell">Action</th>
                                 </tr>
                             </thead>
@@ -71,14 +71,18 @@
                                 @forelse ($bons as $bon)
                                     <tr>
                                         <td class="cell">{{ $bon->numero_compte }}</td>
-                                        <td class="cell">{{ $bon->beneficiare }}</td>
+                                        <td class="cell">{{ $bon->beneficiaire }}</td>
                                         <td class="cell">{{ $bon->intitules }}</td>
                                         <td class="cell">{{ $bon->credits_alloues }} FCFA</td>
                                         <td class="cell">{{ $bon->numero_bon }}</td>
-                                        {{-- <td class="cell">{{ $bon->montant }}</td> --}}
                                         <td class="cell">{{ $bon->montant }}</td>
                                         <td class="cell">{{ $bon->solde_disponible }} FCFA</td>
                                         <td class="cell">{{ $bon->date }}</td>
+                                        <td class="cell"><!-- Nouvelle colonne pour le téléchargement PDF -->
+                                            <center><a class="btn-sm app-btn-secondary" href="{{ route('bonEngagement.bonPDF', $bon->id) }}">
+                                                <i class="fa-solid fa-file-arrow-down"></i>
+                                            </a></center>
+                                        </td>                                                                               
                                         <td class="cell">
                                             <a class="btn-sn app-btn-secondary" href="{{ route('bonEngagement.edit', $bon->id) }}">Editer</a>
                                             <a class="btn-sm app-btn-secondary" href="javascript:void(0);" onclick="confirmDelete(

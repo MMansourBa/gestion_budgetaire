@@ -52,10 +52,10 @@
                 @foreach($bonEngagements as $bonEngagement)
                     <tr>
                         <td>{{$bonEngagement->id}}</td>
-                        <td>{{$bonEngagement->designation}}</td>
-                        <td>{{$bonEngagement->prix_unitaire}}</td>
+                        <td>{{$bonEngagement->intitules}}</td>
+                        <td>{{$bonEngagement->montant}}</td>
                         <td>{{$bonEngagement->qte}}</td>
-                        <td>{{$bonEngagement->prix_unitaire * $bonEngagement->qte}}</td>
+                        <td>{{$bonEngagement->montant * $bonEngagement->qte}}</td>
                         {{-- <td>{{$bonEngagement->created_at->format('d-m-Y') }}</td> --}}
                     </tr>
                 @endforeach
