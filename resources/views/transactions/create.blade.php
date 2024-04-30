@@ -2,6 +2,14 @@
 
 @section('content')
 
+<style>
+	select#numero_compte {
+    font-size: 1000px; /* Modifier la taille de la police selon vos besoins */
+}
+</style>
+
+
+
 <h1 class="app-page-title">DEPENSES</h1>
 			    <hr class="mb-4">
                 <div class="row g-4 settings-section">
@@ -35,7 +43,7 @@
 								    <div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Numéro compte<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
 										</label>
-									    <select name="numero_compte" id="numero_compte" class="form-control">
+									    <select name="numero_compte" id="numero_compte" class="form-control" >
 											<option value=""></option>
 											@foreach ($comptes as $compte)
 												<option value="{{$compte->numero_compte}}">{{$compte->numero_compte}}</option>

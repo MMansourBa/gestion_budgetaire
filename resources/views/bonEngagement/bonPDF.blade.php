@@ -32,7 +32,6 @@
                 <p> Compte: 6184</p>
             </div> --}}
         </div>
-        {{-- <div class="gestion"><p>  <span>Gestion:</span> 2023 </p></div> --}}
         <div class="beneficier">
             <h3>BENEFICIAIRE : SAFIETOU BODIAN</h3>
         </div>
@@ -51,7 +50,7 @@
             <tbody>
                 @foreach($bonEngagements as $bonEngagement)
                     <tr>
-                        <td>{{$bonEngagement->id}}</td>
+                        <td>{{$bonEngagement->numero_bon}}</td>
                         <td>{{$bonEngagement->intitules}}</td>
                         <td>{{$bonEngagement->montant}}</td>
                         <td>{{$bonEngagement->qte}}</td>
@@ -68,9 +67,6 @@
             </tr>
             </tfoot> --}}
         </table>
-        <div class="prix">
-            <p> Arrêté le présent bon d’engagement à la somme de: QUATRE VINGT QUINZE MILLE  FRANCS CFA</p>
-        </div>
         <div class="signature">
             <div class="visa">
                 <h3>Visa A.C.P.</h3>

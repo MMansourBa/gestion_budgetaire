@@ -84,8 +84,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
         Route::put('/update/{bon}', [BonEngagementController::class, 'update'])->name('bonEngagement.update');
         Route::get('/{bon}', [BonEngagementController::class, 'delete'])->name('bonEngagement.delete');
         Route::get('/bonPDF/{id}/download-pdf', [BonPdfController::class, 'bonPdf'])->name('bonEngagement.bonPDF');
-
-        // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');
     });
 
     Route::prefix('mandat')->group(function () {

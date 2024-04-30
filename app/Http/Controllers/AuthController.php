@@ -43,19 +43,41 @@ class AuthController extends Controller
         return view('auth.register');
     }
  
-    public function postRegister(Request $request){
-        $check_email = User::where('email', $request->email)->first();
-        if($check_email){
-            return back()->with('error', 'E-mail déjà utilisé');
-        }
+    // public function postRegister(Request $request){
+    //     $check_email = User::where('email', $request->email)->first();
+    //     if($check_email){
+    //         return back()->with('error', 'E-mail déjà utilisé');
+    //     }
     
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password)
+    //     ]);
+    
+    //     return redirect()->route('login')->with('success', 'Félicitations, votre compte a été créé avec succès !');
+    // }
+
+    public function postRegister(Request $request)
+    {
+        // Valider les données de la requête
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'poste' => 'required|string' // Ajoutez une règle de validation pour le poste
         ]);
-    
-        return redirect()->route('login')->with('success', 'Félicitations, votre compte a été créé avec succès !');
+
+        // Créer un nouvel utilisateur avec les données validées
+        $user = new User();
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        $user->poste = $validated['poste']; // Ajoutez le poste à l'utilisateur
+
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Utilisateur créé avec succès');
     }
     
  

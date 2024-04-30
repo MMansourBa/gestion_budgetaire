@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Inscription | UFR SET</title>
-        <link rel="stylesheet" href="assets/css/login.css" />
+        <link rel="stylesheet" href="assets/css/register.css" />
         <style>
             .error-message {
             text-align: center;
@@ -58,8 +58,17 @@
               <input type="text" name="name" placeholder="Prenom(s) & Nom" required />
               <label>Email</label>
               <input type="text" name="email" placeholder="Email" required />
+              <label>Poste</label>
+              <select name="poste" required>
+                <option value="">Sélectionnez un poste</option>
+                <option value="csa">Chef de Service Administratif</option>
+                <option value="csf">Chef de Service Financier</option>
+              </select>
               <label>Mot de passe</label>
               <input type="password" name="password" placeholder="Mot de passe" required />
+              <label>Confirmer Mot de passe</label>
+              <input type="password" name="password_confirmation" placeholder="Confirmer Mot de passe" required />
+              <br><br>
               <button><span>S'inscrire</span></button>
               <p><a href="{{ route('login') }}">J'ai deja un compte</a></p>
             </form>
