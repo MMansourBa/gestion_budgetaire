@@ -45,7 +45,7 @@ body {
     width: 250px;
     margin: 8px;
     padding: 8px;
-    background: rgb(26, 163, 226);
+    background: rgb(80, 177, 223);
     outline: none;
     border: none;
     border-radius: 20px;
@@ -83,7 +83,7 @@ body {
   }
   .pic {
     width: 75%;
-    background: rgb(121, 188, 219);
+    background: rgb(80, 177, 223);
   }
   .pic img {
     width: 400px;

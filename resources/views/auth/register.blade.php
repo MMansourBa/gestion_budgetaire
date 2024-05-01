@@ -58,12 +58,12 @@
               <input type="text" name="name" placeholder="Prenom(s) & Nom" required />
               <label>Email</label>
               <input type="text" name="email" placeholder="Email" required />
-              <label>Poste</label>
+              {{-- <label>Poste</label>
               <select name="poste" required>
                 <option value="">Sélectionnez un poste</option>
                 <option value="csa">Chef de Service Administratif</option>
                 <option value="csf">Chef de Service Financier</option>
-              </select>
+              </select> --}}
               <label>Mot de passe</label>
               <input type="password" name="password" placeholder="Mot de passe" required />
               <label>Confirmer Mot de passe</label>
