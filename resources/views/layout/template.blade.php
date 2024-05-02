@@ -13,6 +13,7 @@
   
   <!-- FontAwesome JS-->
   <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
   <!-- App CSS -->  
   <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
@@ -47,7 +48,7 @@
   </div>
 
   <!-- base js -->
-  {!! Html::script('js/app.js') !!}
+  {{-- {!! Html::script('js/app.js') !!} --}}
   {!! Html::script('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
   <!-- end base js -->
 

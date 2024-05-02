@@ -78,71 +78,9 @@
 </div>
 
 <br> 
-{{-- <div class="row">
-  <div class="tab-content" id="orders-table-tab-content">
-    <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
-        @foreach ($transactionsParCategorie as $categorie => $transactions)
-            <h2>{{ $categorie }}</h2>
-            @foreach ($transactions->groupBy('numero_compte') as $numeroCompte => $transactionsParNumeroCompte)
-                <div class="app-card app-card-orders-table shadow-sm mb-5">
-                    <div class="app-card-body">
-                        <div class="table-responsive">
-                            <table class="table app-table-hover mb-0 text-left">
-                                <thead>
-                                    <tr>
-                                        <th class="cell">Numero compte</th>
-                                        <th class="cell">Intitulé</th>
-                                        <th class="cell">Crédits alloués</th>
-                                        <th class="cell">N°</th>
-                                        <th class="cell">Intitulé dépense mandaté</th>
-                                        <th class="cell">Montant</th>
-                                        <th class="cell">Payes</th>
-                                        <th class="cell">Solde disponible</th>
-                                        <th class="cell">Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php $firstTransaction = $transactionsParNumeroCompte->first(); @endphp
-                                    <tr>
-                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->numero_compte }}</td>
-                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->intitules }}</td>
-                                        <td rowspan="{{ $transactionsParNumeroCompte->count() }}" class="cell">{{ $firstTransaction->credits_alloues }} FCFA</td>
-                                        @foreach ($transactionsParNumeroCompte as $transaction)
-                                            <td class="cell">{{ $transaction->numero_bon }}</td>
-                                            <td class="cell">{{ $transaction->intitule }}</td>
-                                            <td class="cell">{{ $transaction->montant }} FCFA</td>
-                                            <td class="cell">{{ $transaction->payes }}</td>
-                                            <td class="cell">
-                                                <?php
-                                                $creditAlloue = $transaction->credits_alloues;
-                                                $montantTotalTransactionsPrecedentes = $transactionsParNumeroCompte->where('id', '<=', $transaction->id)->sum('montant');
-                                                $soldeDisponible = $creditAlloue - $montantTotalTransactionsPrecedentes;
-                                                ?>
-                                                {{ $soldeDisponible }} FCFA
-                                            </td>
-                                            <td class="cell">{{ $transaction->date }}</td>
-                                        </tr>
-                                        @if (!$loop->last)
-                                            <tr>
-                                        @endif
-                                    @endforeach
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div><!--//table-responsive-->
-                    </div><!--//app-card-body-->
-                </div><!--//app-card-->
-            @endforeach
-        @endforeach
-        <nav class="app-pagination">
-            {{ $transactions->links() }}
-        </nav><!--//app-pagination-->
-    </div><!--//tab-pane-->
-    
-    
-</div>
 
-</div> --}}
+
+</div>
 
 
 
@@ -158,7 +96,7 @@
   
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 {{-- <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script> --}}
   
     <script>
