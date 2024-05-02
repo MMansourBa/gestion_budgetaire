@@ -40,6 +40,7 @@
         <div class="content-wrapper">
           @yield('content')
         </div>
+        
         @include('layout.footer')
       </div>
     </div>

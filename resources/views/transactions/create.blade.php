@@ -27,7 +27,7 @@
 
                                     <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Catégorie</label>
-                                        <select name="depense_id" id="depense_id" class="form-control">
+                                        <select name="depense_id" id="depense_id" class="form-select">
 											<option value=""></option>
 											@foreach ($depenses as $depense)
 												<option value="{{$depense->id}}">{{$depense->name}}</option>
@@ -43,7 +43,7 @@
 								    <div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Numéro compte<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
 										</label>
-									    <select name="numero_compte" id="numero_compte" class="form-control" >
+									    <select name="numero_compte" id="numero_compte" class="form-select" >
 											<option value=""></option>
 											@foreach ($comptes as $compte)
 												<option value="{{$compte->numero_compte}}">{{$compte->numero_compte}}</option>
@@ -56,7 +56,7 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-2" class="form-label">Intitulé</label>
-									    <select name="intitules" id="intitules" class="form-control">
+									    <select name="intitules" id="intitules" class="form-select">
 											<option value=""></option>
 											@foreach ($comptes as $compte)
 												<option value="{{$compte->intitules}}">{{$compte->intitules}}</option>
@@ -69,7 +69,7 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Crédits alloués</label>
-									    <select name="credits_alloues" id="credits_alloues" class="form-control">
+									    <select name="credits_alloues" id="credits_alloues" class="form-select">
 											<option value=""></option>
 											@foreach ($budgets as $budget)
 												<option value="{{$budget->credits_alloues}}">{{$budget->credits_alloues}}</option>

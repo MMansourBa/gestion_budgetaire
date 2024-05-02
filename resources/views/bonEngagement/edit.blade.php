@@ -19,10 +19,8 @@
 
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Categorie de depenses</label>
-                                        <select name="depense_id" id="depense_id" class="form-control">
+                                        <select name="depense_id" id="depense_id" class="form-select">
                                             <option value=""></option>
-
-
 											@foreach ($depenses as $depense)
 												<option value="{{$depense->id}}">{{$depense->name}}</option>
 											@endforeach
@@ -38,7 +36,7 @@
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">N° Compte</label>
-                                        <select name="numero_compte" id="numero_compte" class="form-control">
+                                        <select name="numero_compte" id="numero_compte" class="form-select">
                                             <option value=""></option>
 
 
@@ -54,7 +52,7 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Intitules</label>
-									    <select name="intitules" id="intitules" class="form-control">
+									    <select name="intitules" id="intitules" class="form-select">
                                             <option value=""></option>
 
 
@@ -93,7 +91,7 @@
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Classe</label>
-                                        <select name="classe" id="classe" class="form-control">
+                                        <select name="classe" id="classe" class="form-select">
                                             <option value=""></option>
 
 
@@ -109,7 +107,7 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Compte Principal</label>
-                                        <select name="cp" id="cp" class="form-control">
+                                        <select name="cp" id="cp" class="form-select">
                                             <option value=""></option>
 
 

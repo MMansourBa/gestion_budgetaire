@@ -19,14 +19,12 @@
 
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Categorie de depenses</label>
-                                        <select name="depense_id" id="depense_id" class="form-control">
-                                            <option value=""></option>
-
-
+                                        <select class="form-select" name="depense_id" id="depense_id" aria-label="Default select example">
+											<option selected>Depenses</option>
 											@foreach ($depenses as $depense)
 												<option value="{{$depense->id}}">{{$depense->name}}</option>
 											@endforeach
-                                        </select>
+										  </select>
 
 										@error('depense_id')
 											<div class="text-danger">{{$message}}</div>
@@ -38,15 +36,12 @@
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">N° Compte</label>
-                                        <select name="numero_compte" id="numero_compte" class="form-control">
-                                            <option value=""></option>
-
-
+                                        <select name="numero_compte" id="numero_compte" class="form-select" aria-label="Default select example">
+                                            <option value="">Selectionnez un numero de compte</option>
 											@foreach ($numero_comptes as $numero)
 												<option value="{{$numero->numero_compte}}">{{$numero->numero_compte}}</option>
 											@endforeach
                                         </select>
-
 										@error('numero_compte')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
@@ -54,10 +49,8 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Intitules</label>
-									    <select name="intitules" id="intitules" class="form-control">
+									    <select name="intitules" id="intitules" class="form-select">
                                             <option value=""></option>
-
-
 											@foreach ($intitules as $intitule)
 												<option value="{{$intitule->intitules}}">{{$intitule->intitules}}</option>
 											@endforeach
@@ -84,7 +77,7 @@
 
 									<div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Beneficiaire</label>
-									    <input type="text" class="form-control" id="setting-input-1" placeholder="NOM DU BENEFICIAIRE" 
+									    <input type="text" class="form-select" id="setting-input-1" placeholder="NOM DU BENEFICIAIRE" 
                                         name="beneficiaire" value="{{old('beneficiaire')}}">
 										@error('beneficiaire')
 											<div class="text-danger">{{$message}}</div>
@@ -93,7 +86,7 @@
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Classe</label>
-                                        <select name="classe" id="classe" class="form-control">
+                                        <select name="classe" id="classe" class="form-select">
                                             <option value=""></option>
 
 
@@ -109,7 +102,7 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Compte Principal</label>
-                                        <select name="cp" id="cp" class="form-control">
+                                        <select name="cp" id="cp" class="form-select">
                                             <option value=""></option>
 
 

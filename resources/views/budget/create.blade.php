@@ -18,7 +18,7 @@
 
                                     <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Numero de compte</label>
-                                        <select name="numero_compte" id="numero_compte" class="form-control">
+                                        <select name="numero_compte" id="numero_compte" class="form-select">
 											<option value=""></option>
 											@foreach ($comptes as $compte)
 												<option value="{{$compte->numero_compte}}">{{$compte->numero_compte}}</option>

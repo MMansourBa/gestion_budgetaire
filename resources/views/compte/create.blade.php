@@ -19,11 +19,17 @@
 
                                     <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Categorie de depenses</label>
-                                        <select name="depense_id" id="depense_id" class="form-control">
+										<select class="form-select" name="depense_id" id="depense_id" aria-label="Default select example">
+											<option selected>Depenses</option>
 											@foreach ($depenses as $depense)
 												<option value="{{$depense->id}}">{{$depense->name}}</option>
 											@endforeach
-                                        </select>
+										  </select>
+                                        {{-- <select name="depense_id" id="depense_id" class="form-control">
+											@foreach ($depenses as $depense)
+												<option value="{{$depense->id}}">{{$depense->name}}</option>
+											@endforeach
+                                        </select> --}}
 
 										@error('depense_id')
 											<div class="text-danger">{{$message}}</div>

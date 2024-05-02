@@ -19,7 +19,7 @@
 
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">N° Mandat</label>
-                                        <select name="numero_mandat" id="numero_mandat" class="form-control">
+                                        <select name="numero_mandat" id="numero_mandat" class="form-select">
                                             <option value=""></option>
 											@foreach ($be as $bon)
 												<option value="{{$bon->numero_bon}}">{{$bon->numero_bon}}</option>
@@ -33,7 +33,7 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Objet</label>
-									    <select name="objet" id="objet" class="form-control">
+									    <select name="objet" id="objet" class="form-select">
                                             <option value=""></option>
 											@foreach ($be as $bon)
 												<option value="{{$bon->intitules}}">{{$bon->intitules}}</option>
@@ -45,7 +45,7 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-1" class="form-label">Beneficiaire</label>
-									    <select name="beneficiaire" id="beneficiaire" class="form-control">
+									    <select name="beneficiaire" id="beneficiaire" class="form-select">
                                             <option value=""></option>
 											@foreach ($be as $bon)
 												<option value="{{$bon->beneficiaire}}">{{$bon->beneficiaire}}</option>
@@ -57,7 +57,7 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-2" class="form-label">Montant</label>
-									    <select name="montant" id="montant" class="form-control">
+									    <select name="montant" id="montant" class="form-select">
                                             <option value=""></option>
 											@foreach ($be as $bon)
 												
