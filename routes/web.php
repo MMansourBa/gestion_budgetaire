@@ -24,6 +24,9 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'postRegister'])->name('register.store');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/profil', [AuthController::class, 'profil'])->name('profil');
+Route::post('/profil/update', [AuthController::class, 'update'])->name('profil.update');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');

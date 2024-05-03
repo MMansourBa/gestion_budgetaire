@@ -6,6 +6,7 @@ use App\Models\Depense;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -87,6 +88,41 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function profil()
+    {
+        return view('auth.profil');
+    }
+    public function update(Request $request) {
+        try{
+            // Valider les données
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users,email,' . auth()->user()->id,
+                'telephone' => 'required|integer',
+                'password' => 'nullable|string|min:8|confirmed',
+            ]);
+        
+            // Mettre à jour l'utilisateur
+            $user = auth()->user();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->telephone = $request->telephone;
+            if ($request->password) {
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
+        
+            return redirect()->route('dashboard')->with('success', 'Informations mises à jour avec succès.');
+        }catch(Exception $e) {
+            dd($e);
+        }
+    }
+
+    
+
+
+
 
     public function dashboard(){
         $totalBudget = DB::table('budgets')->sum('credits_alloues');

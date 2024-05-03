@@ -25,11 +25,6 @@
 												<option value="{{$depense->id}}">{{$depense->name}}</option>
 											@endforeach
 										  </select>
-                                        {{-- <select name="depense_id" id="depense_id" class="form-control">
-											@foreach ($depenses as $depense)
-												<option value="{{$depense->id}}">{{$depense->name}}</option>
-											@endforeach
-                                        </select> --}}
 
 										@error('depense_id')
 											<div class="text-danger">{{$message}}</div>

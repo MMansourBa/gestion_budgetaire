@@ -33,7 +33,7 @@
             </div> --}}
         </div>
         <div class="beneficier">
-            <h3>BENEFICIAIRE : SAFIETOU BODIAN</h3>
+            <h3>BENEFICIAIRE : {{$beneficiaire}}</h3>
         </div>
         <br> <br>   
         <table>
@@ -50,7 +50,7 @@
             <tbody>
                 @foreach($bonEngagements as $bonEngagement)
                     <tr>
-                        <td>{{$bonEngagement->numero_bon}}</td>
+                        <td>{{$bonEngagement->id}}</td>
                         <td>{{$bonEngagement->intitules}}</td>
                         <td>{{$bonEngagement->montant}}</td>
                         <td>{{$bonEngagement->qte}}</td>
