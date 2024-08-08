@@ -2,15 +2,12 @@
 
 @section('content')
 
-<style>
-	select#numero_compte {
-    font-size: 1000px; /* Modifier la taille de la police selon vos besoins */
-}
-</style>
-
 
 
 <h1 class="app-page-title">DEPENSES</h1>
+@if (Session::get('success_message'))
+    <div class="alert alert-success">{{ Session::get('success_message') }}</div>
+@endif
 			    <hr class="mb-4">
                 <div class="row g-4 settings-section">
 	                <div class="col-12 col-md-4">
@@ -41,18 +38,17 @@
 									</div>
 
 								    <div class="mb-3">
-									    <label for="setting-input-1" class="form-label">Numéro compte<span class="ms-2" data-container="body" data-bs-toggle="popover" data-trigger="hover" data-placement="top" data-content="This is a Bootstrap popover example. You can use popover to provide extra info.">
-										</label>
-									    <select name="numero_compte" id="numero_compte" class="form-select" >
-											<option value=""></option>
+									    <label for="setting-input-3" class="form-label">N° Compte</label>
+                                        <select name="numero_compte" id="numero_compte" class="form-select" aria-label="Default select example">
+                                            <option value="">Selectionnez un numero de compte</option>
 											@foreach ($comptes as $compte)
 												<option value="{{$compte->numero_compte}}">{{$compte->numero_compte}}</option>
 											@endforeach
                                         </select>
-
 										@error('numero_compte')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
+
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-2" class="form-label">Intitulé</label>
@@ -69,12 +65,19 @@
 									</div>
 								    <div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Crédits alloués</label>
-									    <select name="credits_alloues" id="credits_alloues" class="form-select">
+									    {{-- <select name="credits_alloues" id="credits_alloues" class="form-select">
 											<option value=""></option>
 											@foreach ($budgets as $budget)
 												<option value="{{$budget->credits_alloues}}">{{$budget->credits_alloues}}</option>
 											@endforeach
-                                        </select>
+                                        </select> --}}
+										<select name="credits_alloues" id="credits_alloues" class="form-select">
+											<option value=""></option>
+											@foreach ($budgets->unique('credits_alloues') as $budget)
+												<option value="{{$budget->credits_alloues}}">{{$budget->credits_alloues}}</option>
+											@endforeach
+										</select>
+										
 										@error('credits_alloues')
 											<div class="text-danger">{{$message}}</div>
 										@enderror

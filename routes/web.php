@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\MandatController;
+use App\Http\Controllers\MandatPdfController;
 use App\Http\Controllers\TransactionController;
 
 Route::get('/',[HomeController::class,'index'])->name('index');
@@ -79,6 +80,7 @@ Route::prefix('transactions')->group(function () {
 
 Route::prefix('bonEngagement')->group(function () {
     Route::get('/', [BonEngagementController::class, 'index'])->name('bonEngagement.index');
+    // Route::get('/index2', [BonEngagementController::class, 'index2'])->name('bonEngagement.index2');
     Route::get('/create', [BonEngagementController::class, 'create'])->name('bonEngagement.create');
     Route::post('/create', [BonEngagementController::class, 'store'])->name('bonEngagement.store');
     Route::get('/edit/{bon}', [BonEngagementController::class, 'edit'])->name('bonEngagement.edit');
@@ -89,11 +91,13 @@ Route::prefix('bonEngagement')->group(function () {
 
 Route::prefix('mandat')->group(function () {
     Route::get('/', [MandatController::class, 'index'])->name('mandat.index');
+    Route::get('/index2', [MandatController::class, 'index2'])->name('mandat.index2');
     Route::get('/create', [MandatController::class, 'create'])->name('mandat.create');
     Route::post('/create', [MandatController::class, 'store'])->name('mandat.store');
     Route::get('/edit/{mandat}', [MandatController::class, 'edit'])->name('mandat.edit');
     Route::put('/update/{mandat}', [MandatController::class, 'update'])->name('mandat.update');
     Route::get('/{mandat}', [MandatController::class, 'delete'])->name('mandat.delete');
+    Route::get('/mandatPDF/{id}/download-pdf', [MandatPdfController::class, 'mandatPdf'])->name('mandat.mandatPDF');
 // Route::get('/search', [DepenseController::class, 'search'])->name('depense.search');
 });
 

@@ -14,6 +14,7 @@
   <!-- FontAwesome JS-->
   <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
     
   <!-- App CSS -->  
   <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
@@ -36,12 +37,19 @@
   <div class="container-scroller" id="app">
     @include('layout.header')
     <div class="container-fluid page-body-wrapper">
-      @include('layout.sidebar')
+    @if(auth()->check())
+        @if(auth()->user()->poste === 'csa')
+          @include('layout.second_sidebar') <!-- Inclure le sidebar du CSA -->
+        @elseif(auth()->user()->poste === 'csf')
+          @include('layout.sidebar') <!-- Inclure le sidebar du CSF -->
+          @elseif(auth()->user()->poste === 'directeur')
+          @include('layout.third_sidebar')
+        @endif
+    @endif
       <div class="main-panel">
         <div class="content-wrapper">
           @yield('content')
         </div>
-        
         @include('layout.footer')
       </div>
     </div>

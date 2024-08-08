@@ -77,8 +77,6 @@
   </div>
 </div>
 
-<br> 
-
 
 </div>
 
@@ -86,12 +84,11 @@
 
 
 
-<h1 style="text-align: center; color:rgb(67, 196, 67)">
-            <i class="fas fa-chart-pie mr-1"></i>
-            DEPENSES</h1>
-
-
-        <canvas id="chart"></canvas>
+<h1 style="text-align: center; color:rgb(11, 197, 95)">
+  <i class="menu-icon fa-solid fa-hand-holding-dollar"></i>
+            DEPENSES
+</h1>
+<canvas id="chart" width="50px" height="25px"></canvas>
 
   
   

@@ -56,7 +56,7 @@
 										@enderror
 									</div>
 									<div class="mb-3">
-									    <label for="setting-input-2" class="form-label">Montant</label>
+									    <label for="setting-input-2" class="form-label">Montant (FCFA)</label>
 									    <select name="montant" id="montant" class="form-select">
                                             <option value=""></option>
 											@foreach ($be as $bon)

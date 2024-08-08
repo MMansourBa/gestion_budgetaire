@@ -14,8 +14,14 @@ class MandatController extends Controller
      //Recherhe employers
      public function index()
      {
-         $mandats = Mandat::with('bonEngagement')->paginate(10);
-         return view('mandat.index', compact('mandats'));
+        $mandats = Mandat::with('bonEngagement')->paginate(10);
+        return view('mandat.index', compact('mandats'));
+     }
+
+     public function index2()
+     {
+        $mandats = Mandat::with('bonEngagement')->paginate(10);
+        return view('mandat.index2', compact('mandats'));
      }
  
      //Ajout employers

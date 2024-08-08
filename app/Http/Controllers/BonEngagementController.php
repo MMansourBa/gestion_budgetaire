@@ -39,6 +39,27 @@ class BonEngagementController extends Controller
         return view('bonEngagement.index', compact('bonsParCategorie'));
     }
 
+    // public function index2()
+    // {
+    //     // Récupérer toutes les catégories de dépenses disponibles
+    //     $depenses = Depense::all();
+
+    //     // Initialiser un tableau pour stocker les comptes par catégorie
+    //     $bonsParCategorie = [];
+
+    //     // Pour chaque catégorie, récupérer les bons associées
+    //     foreach ($depenses as $depense) {
+    //         // Récupérer les bons associées à cette catégorie
+    //         $depenses = BonEngagement::where('depense_id', $depense->id)->paginate(10);
+
+    //         // Stocker les bons dans le tableau $bonsParCategorie
+    //         $bonsParCategorie[$depense->name] = $depenses;
+    //     }
+
+    //     // Passer les données à la vue
+    //     return view('bonEngagement.index2', compact('bonsParCategorie'));
+    // }
+
     //Ajout 
     public function create()
     {

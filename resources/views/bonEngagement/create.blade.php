@@ -60,14 +60,14 @@
 										@enderror
 									</div>
 									<div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Credits alloues</label>
+									    <label for="setting-input-3" class="form-label">Credits alloues(FCFA)</label>
 									    <input type="number" class="form-control" id="setting-input-3" name="credits_alloues" placeholder="Credits alloues" value="{{old('credits_alloues')}}">
 										@error('credits_alloues')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
 									</div>
 									<div class="mb-3">
-									    <label for="setting-input-2" class="form-label">N°</label>
+									    <label for="setting-input-2" class="form-label">N° (Numero bon/Annee en cours)</label>
 									    <input type="text" class="form-control" id="setting-input-2" placeholder="Numero du bon"
                                          name="numero_bon" value="{{old('numero_bon')}}">
 										 @error('numero_bon')
@@ -86,15 +86,18 @@
 									
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Classe</label>
-                                        <select name="classe" id="classe" class="form-select">
+                                        {{-- <select name="classe" id="classe" class="form-select">
                                             <option value=""></option>
-
-
 											@foreach ($classes as $classe)
 												<option value="{{$classe->classe}}">{{$classe->classe}}</option>
 											@endforeach
-                                        </select>
-
+                                        </select> --}}
+										<select name="classe" id="classe" class="form-select">
+											<option value=""></option>
+											@foreach ($classes->unique('classe') as $classe)
+												<option value="{{$classe->classe}}">{{$classe->classe}}</option>
+											@endforeach
+										</select>
 										@error('classe')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
@@ -102,15 +105,19 @@
 									</div>
 									<div class="mb-3">
 									    <label for="setting-input-3" class="form-label">Compte Principal</label>
-                                        <select name="cp" id="cp" class="form-select">
+                                        {{-- <select name="cp" id="cp" class="form-select">
                                             <option value=""></option>
-
-
 											@foreach ($cps as $cp)
 												<option value="{{$cp->cp}}">{{$cp->cp}}</option>
 											@endforeach
-                                        </select>
-
+                                        </select> --}}
+										<select name="cp" id="cp" class="form-select">
+											<option value=""></option>
+											@foreach ($cps->unique('cp') as $cp)
+												<option value="{{$cp->cp}}">{{$cp->cp}}</option>
+											@endforeach
+										</select>
+										
 										@error('cp')
 											<div class="text-danger">{{$message}}</div>
 										@enderror
@@ -127,7 +134,7 @@
 									</div>
 
 									<div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Montant</label>
+									    <label for="setting-input-3" class="form-label">Montant (FCFA)</label>
 									    <input type="number" class="form-control" id="setting-input-3" name="montant" placeholder="Montant" value="{{old('montant')}}">
 										@error('montant')
 											<div class="text-danger">{{$message}}</div>

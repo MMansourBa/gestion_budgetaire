@@ -77,14 +77,16 @@ class DepenseController extends Controller
         
     }
 
-    //Rechercher
     public function search(Request $request)
     {
-        $searchTerm = $request->input('search');
+        $search = $request->input('search');
 
-        $depenses = Depense::where('name', 'LIKE', "%$searchTerm%")->get();
+        // Rechercher dans la base de données
+        $depenses = Depense::where('name', 'like', "%{$search}%")->paginate(10);
 
-        return view('depenses.index', compact('depenses'));
-    }   
+        // Retourner la vue avec les résultats
+        return view('depenses.index', compact('depenses', 'search'));
+    }
+
 
 }

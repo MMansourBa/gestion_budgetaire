@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 class ChartController extends Controller
 {
     public function chart(){
-
-        // $transactions = Transaction::selectRaw('MONTH(date) as month, COUNT(*) as count')
-        //                             ->whereYear('date', date('Y'))
-        //                             ->groupBy('month')
-        //                             ->orderBy('month')
-        //                             ->get();
         $transactions = Transaction::selectRaw('MONTH(date) as month, SUM(montant) as total_amount')
                         ->whereYear('date', date('Y'))
                         ->groupBy('month')
@@ -32,7 +26,6 @@ class ChartController extends Controller
 
             foreach($transactions as $transaction){
                 if($transaction->month == $i){
-                    // $count = $transaction->count;
                     $count = $transaction->total_amount;
 
                     break;

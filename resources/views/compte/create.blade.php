@@ -59,7 +59,7 @@
 										@enderror
 									</div>
                                     <div class="mb-3">
-									    <label for="setting-input-3" class="form-label">Compte</label>
+									    <label for="setting-input-3" class="form-label">Numero Compte</label>
 									    <input type="number" class="form-control" id="setting-input-3" name="numero_compte" placeholder="Compte"
                                         value="{{old('numero_compte')}}">
 										@error('numero_compte')

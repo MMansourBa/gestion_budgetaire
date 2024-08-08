@@ -104,10 +104,10 @@ class TransactionController extends Controller
                 Transaction::create($request->all());
                 return redirect()->route('transaction.index')->with('success_message', 'Transaction créée avec succès.');
             } else {
-                return redirect()->route('transaction.index')->with('error_message', 'La somme des montants des transactions dépasse le crédit alloué pour ce numéro de compte.');
+                return redirect()->route('transaction.create')->with('success_message', 'La somme des montants des transactions dépasse le crédit alloué pour ce numéro de compte.');
             }
         } else {
-            return redirect()->route('transaction.index')->with('error', 'Aucun crédit alloué trouvé pour ce numéro de compte.');
+            return redirect()->route('budget.index')->with('success_message', 'Aucun crédit alloué trouvé pour ce numéro de compte.');
         }
     }
 

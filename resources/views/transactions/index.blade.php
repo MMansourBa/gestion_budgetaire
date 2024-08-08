@@ -39,9 +39,6 @@
     <div class="alert alert-success">{{ Session::get('success_message') }}</div>
 @endif
 
-@if (Session::get('error_message'))
-    <div class="alert alert-error" style="color: red"><center>{{ Session::get('error_message') }}</center></div>
-@endif
 <div class="tab-content" id="orders-table-tab-content">
     <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
         @foreach ($transactionsParCategorie as $categorie => $transactions)

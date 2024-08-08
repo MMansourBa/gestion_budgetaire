@@ -65,6 +65,7 @@
                 <option value="">Sélectionnez un poste</option>
                 <option value="csa">Chef de Service Administratif</option>
                 <option value="csf">Chef de Service Financier</option>
+                <option value="directeur">Directeur</option>
               </select>
               <label>Mot de passe</label>
               <input type="password" name="password" placeholder="Mot de passe" required />
